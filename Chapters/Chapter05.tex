@@ -1,0 +1,110 @@
+%************************************************
+\chapter{Frameworks for multi-platform development}\label{ch:frameworks}
+%************************************************
+There are numerous frameworks that have been developed over the years to facilitate the creation of multi-platform applications. Just like in the 90s when vendors saw market opportunities in releasing multi-platform applications for the desktop, most of the solutions available for cross-platform mobile development are of the commercial nature.
+
+
+However, \marginpar{PhoneGap is the commercial name of the Apache Cordova Open Source Project.} some open source players do exist. They have been gaining popularity and better features over time, some even have been backed by bigger organisations offering both free and commercial packages. Examples worth noting in this category are PhoneGap, backed by Adobe and MonoTouch, backed by Xamarin.
+\graffito{Mono is an open source implementation of Microsoft's .NET Framework.}
+
+\section{Types of Frameworks}
+When it comes to choosing the adequate framework to use for the development of your application there are many options that vary in features, pricing and support; but they can all be sorted into three different categories, based on the type of application they produce at the end. These categories are:
+\begin{enumerate}
+    \item HTML5 Web Applications (\autoref{sec:web_app})
+    \item Hybrid Applications (\autoref{sec:hyb_app})
+    \item Pseudo-Native Applications (\autoref{sec:pseudo_app})
+\end{enumerate}
+
+You should always keep in mind the advantages and drawbacks of each when choosing which type of framework is the best for you needs, but let us take a look at \autoref{tab:frameworks} first. It should give you an overview over the technologies used and the type of applications produced by the most popular cross-platform frameworks. We will discuss each type in detail later on.\newline
+\begin{table}[H]
+    \myfloatalign
+  \begin{tabularx}{\textwidth}{Xll} \toprule
+    \tableheadline{Name} & \tableheadline{Language} & \tableheadline{Type}\\ 
+    \midrule
+    Any web framework & HTML5 \& Javascript & Web App\\
+    Corona SDK & Lua & Pseudo-Native\\
+    Icenium & Javascript & Hybrid\\
+    Intel XDK & Javascript & Hybrid\\
+    PhoneGap & Javascript & Hybrid\\
+    Rhodes & Ruby \& Javascript & Hybrid\\
+    Titanium SDK & Javascript & Hybrid\\
+    Xamarin & C\# + Native UI & Pseudo-Native\\      
+    %\midrule
+    \bottomrule
+  \end{tabularx}
+  \caption[Characteristics of the most popular cross-platform frameworks]{Overview of some characteristics of the most popular cross-platform frameworks}  \label{tab:frameworks}
+\end{table}  
+
+As \autoref{tab:frameworks} lets us see, the majority of available frameworks seem to be those that deliver a hybrid application. This phenomenon can be explained by what \citeauthor{allen:2010} express in their book about Cross-Platform Development:
+\begin{quotation}
+The innovation in cross-platform frameworks for smartphone applications surpasses the patterns of abstraction seen in the cross-platform desktop frameworks of the 1990s. These new smartphone frameworks are influenced by the rapid application development techniques we are seeing in web development today. There are three specific techniques in web application development that are borrowed for these non-web frameworks: 1) layout with mark-up (HTML/CSS); 2) using URLs to identify screen layouts and visual state; and 3) incorporating dynamic languages, such as Javascript and Ruby.\\
+
+A generation of designers and user interface developers are fluent in HTML and CSS for layout and construction of visual elements. Additionally, addressing each screen by a unique name in a sensible hierarchy (URL) with a systemized way of defining connections between them (links and form posts) has created a lingua franca understood by visual and interactions designers, information architects, and programmers alike. This common language and its standard implementation patterns led to the development of frameworks and libraries that significantly speed application development on the Web. These patterns are now being applied to the development of mobile applications as common techniques by individual developers as well as in cross-platform frameworks.
+\cite[p. 23]{allen:2010}
+\end{quotation}
+Before we dive into each type of framework, \autoref{fig:hybrid_native} should give you a better overview over the capabilities of each of them.\\
+
+\marginpar{\autoref{fig:hybrid_native}: The 'Native' label also applies to Pseudo-Native}
+\begin{figure}[H]
+    \begin{center}
+        {\includegraphics[width=1\linewidth]{gfx/Native_html5_hybrid}}
+        \caption[Overview of app capabilities. Native vs. Hybrid vs. HTML5]{Overview of app capabilities. Native vs. Hybrid vs. HTML5\footnotemark}\label{fig:hybrid_native}
+    \end{center}
+\end{figure}
+\footnotetext{Source: \url{http://wiki.developerforce.com/page/Native,_HTML5,_or_Hybrid:_Understanding_Your_Mobile_Application_Development_Options}}\\
+
+\subsection{HTML5 Web Applications}\label{sec:web_app}
+Just as any other website, \spacedlowsmallcaps{HTML5 Web Applications} can be developed in any language that can be translated to HTML code on runtime. Some examples of these languages are \emph{Ruby, PHP, Python, JSP} or just plain HTML. Some of the most popular web development frameworks, like Ruby on Rails or Synfony\marginpar{Synfony is an MVC Framework for PHP, similar, but not quite as powerful as Rails.}, are very well suited for the development of Web Applications for Mobile Devices.
+
+
+But having HTML code is not everything, you still need to make it look good in the smaller screen of cellphones and tablets. That's where CSS3 comes to the rescue. With CSS3 you define the look and feel of the application, but you need to define specific rules for devices with a smaller resolution. This can be accomplished in two ways:
+\begin{enumerate}
+    \item Responsive CSS3 Design
+    \item Separate Domain and CSS files for mobile devices
+\end{enumerate}
+\spacedlowsmallcaps{Responsive CSS3 Design} means you need to distinguish between the different screen sizes and define different rules and properties for each inside your CSS files. With responsive design, changes in screen orientation can also be translated to a different layout, e.g. changing the width of tables or the arrangement of images.
+
+
+With \spacedlowsmallcaps{Separate Files} you will have to redirect visitors using a mobile device to a different domain and have that domain serve the corresponding CSS files. This approach has some caveats, the most obvious one being the overhead of a different domain and the fact that if you want your layout to react to screen dimension changes, you will most likely need to implement some sort of responsive design.   
+ 
+
+These frameworks, however, cannot run inside the mobile device; they need to run in a server, which means that the only way to access the application is through a web browser.
+
+
+This line of action is best suited for smaller projects that want to present their website or web application in a better way to mobile users, but don't have the resources to hire a full time application developer. They can use the designer they have at hand and just optimise their online presence for portable devices.
+
+\subsection{Hybrid Applications}\label{sec:hyb_app}
+\begin{quotation}
+Before any cross-platform frameworks existed, many developers found that embedding Web UI in a native application was a practical way to develop mobile applications quickly and make cross-platform applications easier to maintain. The user interface for mobile applications tends to be presented as a series of screens. From a high level, the mobile UI can be thought of as having the same flow-of-control as a traditional web site or web application. \cite[p. 28]{allen:2010}
+\end{quotation}
+
+\spacedlowsmallcaps{Hybrid Applications} are, in a lot aspects, very similar to HTML5 Web Applications. Both rely on HTML, Javascript and CSS for the definition of the UI, but the edge of Hybrid Applications lies in the way they are packaged.
+
+
+With \spacedlowsmallcaps{Hybrid Applications} the HTML, et al. are contained within a native application, that allows the framework's API to communicate with the operating system, thus leveraging most of the native features the hardware has to offer, e.g. access to the camera, the accelerometer, the GPS, local storage, security features, etc. Access to these features is accomplished via a wrapper that is programmed in each platform's native language and exposes specific methods to an API that is accessible from the HTML side.
+
+
+By having access to these features, Hybrid Applications can behave like native applications and, since they are contained within a native package, there is no need for the user to open a web browser. The user never needs to know whether the application is native or hybrid, everything is just one seamless experience. It also gives you the advantage of distributing your application via the platform's store.
+
+
+This approach gives you many added benefits over a normal HTML5 Application, with little trade-off. There is a learning curve when dealing with the programming frameworks, but the design and layout are still done in HTML and CSS. One of the main benefits you get is that you now have the possibility to make your application available offline and of course the access to system features like push notifications and background services. It is best suited for projects that want to offer more functionality with their mobile applications and are willing to invest some time in learning the new framework.  
+
+\subsection{Pseudo-Native Applications}\label{sec:pseudo_app}
+\spacedlowsmallcaps{Pseudo-Native Applications} are completely different from the other two types. They do not rely on HTML for the UI or on Javascript for communication with native features. These applications are compiled to native code and appear to the device as full native applications. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
