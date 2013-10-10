@@ -23,6 +23,7 @@ You should always keep in mind the advantages and drawbacks of each when choosin
     \midrule
     Any web framework & HTML5 \& Javascript & Web App\\
     Corona SDK & Lua & Pseudo-Native\\
+    Embarcadero & Delphi \& C++ & Pseudo-Native\\
     Icenium & Javascript & Hybrid\\
     Intel XDK & Javascript & Hybrid\\
     PhoneGap & Javascript & Hybrid\\
@@ -32,8 +33,9 @@ You should always keep in mind the advantages and drawbacks of each when choosin
     %\midrule
     \bottomrule
   \end{tabularx}
-  \caption[Characteristics of the most popular cross-platform frameworks]{Overview of some characteristics of the most popular cross-platform frameworks}  \label{tab:frameworks}
-\end{table}  
+  \caption[Characteristics of the most popular cross-platform frameworks]{Overview of some characteristics of the most popular cross-platform frameworks\footnotemark}  \label{tab:frameworks}
+\end{table}
+\footnotetext{Information taken from the Framework's respective website}  
 
 As \autoref{tab:frameworks} lets us see, the majority of available frameworks seem to be those that deliver a hybrid application. This phenomenon can be explained by what \citeauthor{allen:2010} express in their book about Cross-Platform Development:
 \begin{quotation}
@@ -90,10 +92,23 @@ By having access to these features, Hybrid Applications can behave like native a
 This approach gives you many added benefits over a normal HTML5 Application, with little trade-off. There is a learning curve when dealing with the programming frameworks, but the design and layout are still done in HTML and CSS. One of the main benefits you get is that you now have the possibility to make your application available offline and of course the access to system features like push notifications and background services. It is best suited for projects that want to offer more functionality with their mobile applications and are willing to invest some time in learning the new framework.  
 
 \subsection{Pseudo-Native Applications}\label{sec:pseudo_app}
-\spacedlowsmallcaps{Pseudo-Native Applications} are completely different from the other two types. They do not rely on HTML for the UI or on Javascript for communication with native features. These applications are compiled to native code and appear to the device as full native applications. 
+\spacedlowsmallcaps{Pseudo-Native Applications} are completely different from the other two types. They do not rely on HTML for the UI or on Javascript for communication with native features. These applications are compiled to native code and appear to the device as being truly native.
 
 
+The way the UI is programmed varies between the different frameworks. It can be done using the native tools of each platform; using a visual designer provided by the framework or programatically, using libraries provided by the framework.
 
+
+Independently from which method is used for the UI, the business logic is always done separately in an effort to abstract as much code as possible, that way you don't need to repeat yourself that much.
+
+
+One of the downsides of taking this approach, is that you have to program the UI separately for each platform, which translates into more work and somewhat less maintainability. The advantages, however, can offset all the extra effort.\\
+
+
+Let's take a look at the advantages offered by this type of applications:
+
+\spacedlowsmallcaps{Speed} By not using any interpreted languages, code performance is increased. This is crucial for applications that need to do a lot of calculations quickly or that rely on the assessment of large amounts of data.
+
+\spacedlowsmallcaps{Flexibility} Since the UI code is not shared between platforms, it gives you the flexibility to adapt and modify the layout of your application depending on which device is running it. It also gives your application a truly native look \& feel and not an emulated one.     
 
 
 
