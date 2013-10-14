@@ -1,6 +1,17 @@
 %************************************************
 \chapter{Current mobile Platforms}\label{ch:m_plats} % $\mathbb{ZNR}$
 %************************************************
+Over the past few years competition between the different platform manufacturers has increased, leading to better products and features. In this chapter we will take a look at the most important players in mobile OS race, in alphabetical order.
+
+\marginpar{\autoref{fig:trend} should give you an overview of the market share.}
+\begin{figure}[H]
+    \begin{center}
+        {\includegraphics[width=1\linewidth]{gfx/statista-mobile}}
+        \caption[Mobile OS Market Share Trend]{Mobile OS Market Share Trend\footnotemark}\label{fig:trend}
+    \end{center}
+\end{figure}
+\footnotetext{Source: \url{http://www.statista.com/statistics/266136/global-market-share-held-by-smartphone-operating-systems}}\\
+
 \section{Android}
 \spacedlowsmallcaps{Android} is a Linux based operating system specially designed for touchscreen devices like smartphones or tablets. It began as the brain-child of a new company called Android, Inc. back in 2003.
 
@@ -14,10 +25,10 @@ Google bought Android, Inc. in 2005 and made it a wholly owned subsidiary. The m
 Up until the release of the first Android Device on October \nth{22}, 2008, Google conducted secret meetings with many handset and chip manufacturers to discuss the creation of a new consortium, the Open Handset Alliance, with the goal to develop open standards for mobile devices. The Alliance was unveiled on November \nth{5}, 2007.\footnote{\url{http://www.openhandsetalliance.com/press_110507.html}}
 
 
-After the first device with Android, the HTC Dream, was released there has been a major surge of devices using Android. Hardware manufacturers from all over the world have chosen Android as their favourite operating system, not only for smartphones and tablets but also for embedded devices like the Cotton Candy Stick from FXI Technologies and even gaming consoles like the Ouya. %They have gone the Android route to give their devices a robust and secure operating system.
+After the first device with Android, the HTC Dream, was released there has been a major surge of devices using Android. Hardware manufacturers from all over the world have chosen Android as their favourite operating system, not only for smartphones and tablets but also for embedded devices like the Cotton Candy Stick\footnote{\url{http://www.fxitech.com/technology/for-android/}} from FXI Technologies and even for gaming consoles like the Ouya\footnote{\url{https://www.ouya.tv/discover/}}. %They have gone the Android route to give their devices a robust and secure operating system.
 
 
-The development of system features and other components has been done at a steady pace, releasing new versions of the OS every couple of months. The team has chosen to give colourful names to each release, always in alphabetical order and always named after a dessert or a sweet treat. A closer look at \autoref{fig:android1} and \autoref{fig:android2} should give you  better overview over the different versions of Android and what each new version brought forth.   
+The development of system features and other components has been done at a steady pace, releasing new versions of the OS every couple of months. The team has chosen to give colourful names to each release, always in alphabetical order and always named after a dessert or a sweet treat. A closer look at \autoref{fig:android1} and \autoref{fig:android2} should give you a better overview over the different versions of Android and what each of them brought forth.   
 
 \begin{figure}
     \hbox{
@@ -48,14 +59,50 @@ But these types of modifications are not only common inside hobbyist communities
 Using an Open Source Model also guarantees Android an independent future from Google. Even if Google stops supporting \marginpar{Note: Google is unlikely to stop supporting Android} Android, the community will pick up the pieces and continue with its development and will guarantee its longevity.
  
 \section{BlackBerry}
+The Blackberry OS is proprietary mobile operating system developed by BlackBery Ltd\marginpar{Balckberry Ltd was until recently known as RIM (Research In Motion)} exclusively for its line of BlackBerry devices.
+
+\begin{quotation}
+The operating system provides multitasking and supports specialized input devices that have been adopted by BlackBerry Ltd. for use in its handhelds, particularly the trackwheel, trackball, and most recently, the trackpad and touchscreen.\\
+
+The BlackBerry platform is perhaps best known for its native support for corporate email, through MIDP 1.0 and, more recently, a subset of MIDP 2.0, which allows complete wireless activation and synchronization with Microsoft Exchange, Lotus Domino, or Novell GroupWise email, calendar, tasks, notes, and contacts, when used with BlackBerry Enterprise Server. The operating system also supports WAP 1.2.\\
+
+Updates to the operating system may be automatically available from wireless carriers that support the BlackBerry over the air software loading (OTASL) service.\\
+
+Third-party developers can write software using the available BlackBerry API classes, although applications that make use of certain functionality must be digitally signed.
+\cite{wikipedia:bb}
+\end{quotation}
+
+
+  
+
+
 \section{iOS}
+\spacedlowsmallcaps{iOS} is a Unix-based (BSD) mobile operating system designed by Apple exclusively for its mobile devices, the iPhone\textregistered{} and the iPad\textregistered.
+
+\begin{quotation}
+    The operating system was unveiled with the iPhone at the Macworld Conference \& Expo, January 9, 2007, and released in June of that year. At first, Apple marketing literature did not specify a separate name for the operating system, stating simply that the "iPhone runs OS X". Initially, third-party applications were not supported. Steve Jobs' reasoning was that developers could build web applications that "would behave like native apps on the iPhone". On October 17, 2007, Apple announced that a native Software Development Kit (SDK) was under development and that they planned to put it "in developers' hands in February". On March 6, 2008, Apple released the first beta, along with a new name for the operating system: "iPhone OS".
+Apple had released the iPod Touch, which had most of the non-phone capabilities of the iPhone. Apple also sold more than one million iPhones during the 2007 holiday season. On January 27, 2010, Apple announced the iPad, featuring a larger screen than the iPhone and iPod Touch, and designed for web browsing, media consumption, and reading iBooks.
+In June 2010, Apple rebranded iPhone OS as "iOS". The trademark "IOS" had been used by Cisco for over a decade for its operating system, IOS, used on its routers. To avoid any potential lawsuit, Apple licensed the "IOS" trademark from Cisco.
+\cite{wikipedia:ios}
+\end{quotation}
+
+The history of iOS has been very straight forward, there haven't been any complications and a new version has been unveiled every year. Unlike Google, Apple doesn't use code-names for every version of iOS, they just carry their version number. You can take a look at \autoref{fig:ios} for a more detailed description of every iOS version released until now.  
+
 \begin{figure}[H]
     \begin{center}
-        {\includegraphics[width=.90\linewidth]{gfx/ios-history}}
+        {\includegraphics[width=.95\linewidth]{gfx/ios-history}}
         \caption[Visual History of iOS]{Visual History of iOS\footnotemark}\label{fig:ios}
     \end{center}
 \end{figure}
 \footnotetext{Source: \url{http://visual.ly/history-ios}}\\
+
+\subsection{Jailbreaking}
+The very strict guidelines and restrictions imposed by Apple on their mobile operating system have led to many developers and hackers to develop ways to circumvent them and use their rightfully owned devices to their full potential. This method is called \emph{Jailbreaking} \marginpar{Jailbreak: In other words, release their devices from the fictional jail imposed by Apple.} and it give users access to many features that are present in Android devices, but either Apple has decided to block them or Apple allows the service providers to block them. The most notorious example in this particular area is Internet Sharing. 
+
+
+In the United States, for example, Verizon blocks access to a system setting that allows you to share the mobile internet access of the device with other wireless devices, unless you pay an extra fee.\footnote{\url{http://arstechnica.com/information-technology/2013/10/how-i-share-my-iphones-internet-connection-without-paying-verizon-extra/}} This feature can also be blocked on Android devices, but unlike Apple, Google does allow applications that let you share your internet access into its store. Apple just blocks them. The only way around it, is to jailbreak your device.
+
+The reason I mention this topic here is that it has become a really important issue, specially surrounding user rights. There have been     
 
 \section{Windows Phone}
 \section{Other platforms worth noting}
