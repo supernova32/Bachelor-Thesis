@@ -5,7 +5,7 @@ There are numerous frameworks that have been developed over the years to facilit
 
 
 However, \marginpar{PhoneGap is the commercial name of the Apache Cordova Open Source Project.} some open source players do exist. They have been gaining popularity and better features over time, some have even been backed by bigger organisations, and now offer both free and commercial packages. Examples worth noting in this category are PhoneGap, backed by Adobe and MonoTouch, backed by Xamarin.
-\graffito{Mono is an open source implementation of Microsoft's .NET Framework.}
+\graffito{MonoTouch is an open source implementation of Microsoft's .NET Framework.}
 
 \section{Types of Frameworks}
 When it comes to choosing the adequate framework to use for the development of your application, there are many options that vary in number of features, pricing and support; but they can all be sorted into three distinct categories, based on the type of application they produce at the end. These categories are:
@@ -22,14 +22,14 @@ You should always keep in mind the advantages and drawbacks of each when choosin
   \begin{tabularx}{\textwidth}{Xll} \toprule
     \tableheadline{Name} & \tableheadline{Language} & \tableheadline{Type}\\ 
     \midrule
-    Any web framework & HTML5 \& Javascript & Web App\\
+    Web frameworks & HTML \& Javascript & Web App\\
     Corona SDK & Lua & Pseudo-Native\\
     Embarcadero & Delphi \& C++ & Pseudo-Native\\
     Icenium\textsuperscript{*} & Javascript & Hybrid\\
     Intel XDK\textsuperscript{*} & Javascript & Hybrid\\
     PhoneGap\textsuperscript{*} & Javascript & Hybrid\\
     Rhodes & Ruby \& Javascript & Hybrid\\
-    Titanium SDK & Javascript & Hybrid\\
+    Titanium SDK & Javascript & Hybrid \& Pseudo-Native\\
     Xamarin & C\# + Native UI & Pseudo-Native\\      
     %\midrule
     \bottomrule
@@ -41,7 +41,7 @@ You should always keep in mind the advantages and drawbacks of each when choosin
 
 As \autoref{tab:frameworks} lets us see, the majority of available frameworks seem to be those that deliver a hybrid application. This phenomenon can be explained by what \citeauthor{allen:2010} express in their book about Cross-Platform Development:
 \begin{quotation}
-The innovation in cross-platform frameworks for smartphone applications surpasses the patterns of abstraction seen in the cross-platform desktop frameworks of the 1990s. These new smartphone frameworks are influenced by the rapid application development techniques we are seeing in web development today. There are three specific techniques in web application development that are borrowed for these non-web frameworks: 1) layout with mark-up (HTML/CSS); 2) using URLs to identify screen layouts and visual state; and 3) incorporating dynamic languages, such as Javascript and Ruby.\\
+These new smartphone frameworks are influenced by the rapid application development techniques we are seeing in web development today. There are three specific techniques in web application development that are borrowed for these non-web frameworks: 1) layout with mark-up (HTML/CSS); 2) using URLs to identify screen layouts and visual state; and 3) incorporating dynamic languages, such as Javascript and Ruby.
 
 A generation of designers and user interface developers are fluent in HTML and CSS for layout and construction of visual elements. Additionally, addressing each screen by a unique name in a sensible hierarchy (URL) with a systemized way of defining connections between them (links and form posts) has created a lingua franca understood by visual and interactions designers, information architects, and programmers alike. This common language and its standard implementation patterns led to the development of frameworks and libraries that significantly speed application development on the Web. These patterns are now being applied to the development of mobile applications as common techniques by individual developers as well as in cross-platform frameworks.
 \cite[p. 23]{allen:2010}
@@ -79,42 +79,45 @@ This line of action is best suited for smaller projects that want to present the
 
 \subsection{Hybrid Applications}\label{sec:hyb_app}
 \begin{quotation}
-Before any cross-platform frameworks existed, many developers found that embedding Web UI in a native application was a practical way to develop mobile applications quickly and make cross-platform applications easier to maintain. The user interface for mobile applications tends to be presented as a series of screens. From a high level, the mobile UI can be thought of as having the same flow-of-control as a traditional web site or web application. \cite[p. 28]{allen:2010}
+Before any cross-platform frameworks existed, many developers found that embedding a Web \ac{UI} in a native application was a practical way to develop mobile applications quickly and make cross-platform applications easier to maintain. The user interface for mobile applications tends to be presented as a series of screens. From a high level, the mobile \ac{UI} can be thought of as having the same flow-of-control as a traditional web site or web application. \cite[p. 28]{allen:2010}
 \end{quotation}
 
-\spacedlowsmallcaps{Hybrid Applications} are, in a lot aspects, very similar to HTML5 Web Applications. Both rely on HTML, Javascript and CSS for the definition of the UI, but the edge of Hybrid Applications lies in the way they are packaged.
+\spacedlowsmallcaps{Hybrid Applications} are, in a lot aspects, very similar to HTML5 Web Applications. Both rely on HTML, Javascript and CSS for the definition of the \ac{UI}, but the edge of Hybrid Applications lies in the way they are packaged.
 
+With Hybrid Applications the HTML, et al. are contained within a native package, that allows the framework's \ac{API} to communicate with the operating system, thus leveraging some of the native features the hardware has to offer, e.g. access to the camera, the accelerometer, the GPS, local storage, etc. Access to these features is accomplished via a wrapper that is programmed in each platform's native language and exposes specific methods to an \ac{API} that is accessible from the HTML side using Javascript methods.
 
-With \spacedlowsmallcaps{Hybrid Applications} the HTML, et al. are contained within a native application, that allows the framework's API to communicate with the operating system, thus leveraging most of the native features the hardware has to offer, e.g. access to the camera, the accelerometer, the GPS, local storage, etc. Access to these features is accomplished via a wrapper that is programmed in each platform's native language and exposes specific methods to an API that is accessible from the HTML side using Javascript methods.
+By having access to these features, Hybrid Applications can behave like native applications and, since they are contained within a native package, there is no need for the user to open a web browser. It also gives you the advantage of distributing your application via the platform's store.
 
+This approach gives you many added benefits over a normal HTML5 Application, with just some trade-offs. There is a learning curve when dealing with the programming frameworks, but the design and layout are still done in HTML and CSS. One of the main benefits you get is that you now have the possibility to make your application available offline and of course the access to system features like push notifications and background services. 
 
-By having access to these features, Hybrid Applications can behave like native applications and, since they are contained within a native package, there is no need for the user to open a web browser. The user never needs to know whether the application is native or hybrid, everything is just one seamless experience. It also gives you the advantage of distributing your application via the platform's store.
+The downside is that every piece of the \ac{UI} \textsc{needs} to be done in CSS and HTML. There are no native controls, so your application will not look exactly as a native application. 
 
-
-This approach gives you many added benefits over a normal HTML5 Application, with little trade-off. There is a learning curve when dealing with the programming frameworks, but the design and layout are still done in HTML and CSS. One of the main benefits you get is that you now have the possibility to make your application available offline and of course the access to system features like push notifications and background services. It is best suited for projects that want to offer more functionality with their mobile applications and are willing to invest some time in learning the new framework.  
+This approach is best suited for projects that want to offer more functionality with their mobile applications and are willing to invest some time in learning the new framework.  
 
 \subsection{Pseudo-Native Applications}\label{sec:pseudo_app}
-\spacedlowsmallcaps{Pseudo-Native Applications} are completely different from the other two types. They do not rely on HTML for the UI or on Javascript for communication with native features. These applications are compiled to native code and appear to the device as being truly native.
+\spacedlowsmallcaps{Pseudo-Native Applications} are completely different from the other two types. They do not rely on HTML for the \ac{UI} or on Javascript for communication with native features. These applications are compiled to native code and appear to the device as being truly native.
 
 
-The way the UI is programmed varies between the different frameworks. It can be done using the native tools of each platform; using a visual designer provided by the framework or programatically, using libraries provided by the framework.
+The way the \ac{UI} is programmed varies between the different frameworks. It can be done using the native tools of each platform; using a visual designer provided by the framework or programatically, using the libraries provided.
+
+Independently from which method is used for the \ac{UI}, the business logic is always done separately in an effort to abstract as much code as possible, that way you don't need to repeat yourself that much.
 
 
-Independently from which method is used for the UI, the business logic is always done separately in an effort to abstract as much code as possible, that way you don't need to repeat yourself that much.
-
-
-One of the downsides of taking this approach, is that you have to program the UI separately for each platform, which translates into more work and somewhat less maintainability. The advantages, however, can offset all the extra effort.
+One of the downsides of taking this approach, is that you have to program the \ac{UI} separately for each platform, which translates into more work and somewhat less maintainability. The advantages, however, can offset all the extra effort.
 
 
 Let's take a look at the advantages offered by this type of applications:
 
-\spacedlowsmallcaps{Speed} By not using any interpreted languages, code performance is increased. This is crucial for applications that need to do a lot of calculations quickly or that rely on the assessment of large amounts of data.
+\begin{description}
 
-\spacedlowsmallcaps{Flexibility} Since the UI code is not shared between platforms, it gives you the flexibility to adapt and modify the layout of your application depending on which device is running it. It also gives your application a truly native look \& feel and not an emulated one.
+\item[Speed:] By not using any interpreted languages, code performance is increased. This is crucial for applications that need to do a lot of calculations quickly or that rely on the assessment of large amounts of data.
 
-\spacedlowsmallcaps{Extra Features} There are some device features that are not available via Wrapper APIs but can be accessed by these frameworks, either by extra libraries or by manually extending the framework with native code. This gives you complete control over what you application is capable of doing.
+\item[Flexibility:] Since the \ac{UI} code is not shared between platforms, it gives you the flexibility to adapt and modify the layout of your application depending on which device is running it. It also gives your application a truly native look \& feel and not an emulated one.
 
-\spacedlowsmallcaps{Code Reusability} If you have external libraries that you would like to include in your project, but don't want to rewrite them, using one of these frameworks allows you to include your own libraries in your application if they are programmed in C or C++. 
+\item[Extra Features:] There are some device features that are not available via Wrapper \ac{API}s but can be accessed by these frameworks, either by extra libraries or by manually extending the framework with native code. This gives you complete control over what you application is capable of doing.
+ 
+\item[Code Reusability:] If you have external libraries that you would like to include in your project, but don't want to rewrite them, using one of these frameworks allows you to include your own libraries in your application if they are programmed in C or C++. 
 
+\end{description}
 
-Using this approach is by no means easy. It requires a lot of investment of time and resources, which most often translates into money. But if you want to have complete control over your project, have code that you want to reuse or simply need your application to run at full speed, this is the right line of action for you.
+Using this approach is by no means easy and requires a lot of time and resources, which most often translates into money. But if you want to have complete control over your project, have code that you want to reuse or you simply need your application to run at full speed, this is the right line of action for you.
