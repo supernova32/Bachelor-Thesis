@@ -1,3 +1,91 @@
 %************************************************
 \chapter{Evaluation of possible frameworks}\label{ch:evaluation}
 %************************************************
+
+There are many developers that are happy with just using HTML \& CSS to style their applications and speed up development, but I believe that a mobile application must be true to the platform it runs on. You can try to emulate native \ac{UI} elements with CSS, but it is going to take longer than using true native elements. For that reason the type of app that best suits us is a \textsc{Pseudo-Native Application}. 
+
+We want to use the best framework for the development of the Job Portal Aggregator for the MHM eRecruiting Systems, so in this chapter we will discuss two specific frameworks, \emph{Xamarin} and \emph{Titanium}, since each one takes a different approach at creating the \ac{UI} for multi-platform applications and are the most popular.
+
+In order to make an informed decision, we need to evaluate them based on a fixed criteria.
+
+ 
+
+Before we begin with what sets each framework apart, let's take a look at the similarities between them.
+
+\begin{description}
+\item[Separate UI implementation:] In order to gain a native look \& feel, the implementation is done (Xamarin) or can be done (Titanium) individually for each platform you plan to support.
+\item[Compilation:] Both frameworks compile their projects to native code and allow easy distribution to the platform's store.
+\item[Pricing:] Both frameworks offer free and paid packages, though they differ greatly in features offered.   
+\end{description}
+
+
+%*******************
+\section{Xamarin}
+After Novell laid off the entire workforce dedicated to maintaining Mono, the open-source implementation of Microsoft’s .NET development framework, in May 2007 the team decided to start its own company and continue with the development and improvement of Mono. They called this company Xamarin and mere months after its inception, the company became profitable, striking a deal with SUSE, the company holding all the old Novell assets, to obtain all the rights to Mono and provide support to legacy clients using the Mono Development Framework.\footnote{\url{http://gigaom.com/2011/12/12/xamarin-mono/}}
+
+\subsection{Language \& Services}
+Xamarin uses C\# as the main programming language, thus leveraging the standard library of C\# and every external library that can run on the .NET Framework.
+
+Xamarin also offers an array of prime components to its Enterprise Customers, offering pre-built packages to make development of large applications easier and faster, such as \ac{UI} controls, themes \& libraries.
+
+ 
+
+
+\subsection{Development Environment \& UI Generation}
+Xamarin Studio is the \ac{IDE} provided by Xamarin, Inc. for use with their framework. It is a multi-platform piece of software aimed to ease development and increase performance.
+
+Like many other \ac{IDE}s, it provides the user with autocompletion, code debugging \& inspection, etc.
+
+One of the biggest advantages of Xamarin Studio is that it incorporates a graphical designer for the Android \ac{UI}, allowing the developer to simply drag-and-drop the elements necessary for each view and adding the necessary logic via user-friendly menus. For iOS it offers integration with the graphical designer of Xcode\marginpar{Xcode is Apple's IDE for Mac \& iOS Development}, called XIB Editor. It allows for the same ease of development, when creating iOS Applications. 
+
+
+%*******************
+\section{Titanium}
+Titanium is the free offering of Appcelerator for multi-platform mobile development. Appcelerator's website best describes the Titanium ecosystem:
+\begin{quotation}
+Our ecosystem enables enterprises and independent developers to rapidly create rich, high quality mobile applications to take advantage of the ever changing mobile device and feature landscape.
+Spanning icon libraries, UI components, advertising and encryption, our Marketplace includes over 330 modules or extensions to deliver rich, high quality apps much faster than would otherwise be possible.
+\footnote{\url{http://www.appcelerator.com/ecosystem/}}
+\end{quotation}
+ 
+
+\subsection{Language \& Services}
+Titanium uses Javascript as the main programming language, but it uses a special set of libraries called CommonJS in order to optimise its \ac{API}.
+
+One of the biggest features of Titanium is the possibility of using the Titanium Cloud Services, a Mobile Backend as a Service (MBaaS), offering a fast and easy way to build connected mobile apps. Developers can choose from a library of services such as push notification, status updates, photo storage, and social integration, or create their own custom cloud services.\footnote{\url{http://www.appcelerator.com/cloud/}} 
+
+
+
+\subsection{Development Environment \& UI Generation}
+Titanium \marginpar{Alloy is an MVC Framework based on Titanium for Hybrid Applications} Studio is the \ac{IDE} provided by Appcelerator for use with their framework. It is a heavily optimised, Eclipse based \ac{IDE} aimed to provide extended features for the Titanium and Alloy Frameworks.
+
+For the development of \ac{UI} elements you can only rely on the different \ac{API} calls provided by the framework. There is no graphical designer, so every change to the layout must be done in code. Titanium does try to simplify this, by placing components that have equivalent counterparts in different platforms within the same namespace.   
+
+
+
+%*******************
+\section{Putting them to the test}
+Now that we know exactly what sets each framework apart and what they do best, we can take a more focused approach at testing each framework according to our requirements.
+
+\begin{itemize}
+\item We need our application to comply with German Data Protection Laws, so we need it to provide encryption for personal data and for the database.
+\item It needs to efficiently communicate with a cloud service and parse the data received in a timely matter.
+\item Development of the application must not take longer than 3 months, so we need to measure how long it takes in average to complete an equivalent application in each of the frameworks.  
+\item The code produced at the end needs to be easy to understand and easy to maintain.   
+ 
+  
+\end{itemize}
+
+
+
+%*******************
+\section{Conclusion}
+
+After all the evaluations, we can see that ... adjusts the best to our needs. 
+
+
+
+
+Now that we have chosen the right framework for our endeavour, we can take a look at the next piece of the puzzle. Before we can start with the development of the application, we still need to discuss a very important part of almost all current applications; a connection to the cloud. 
+
+In the next part we will discuss what the cloud actually is, how it comes into play with mobile applications and why are so may companies investing Millions of Dollars in cloud technology. 
