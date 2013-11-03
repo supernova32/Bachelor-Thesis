@@ -1,11 +1,14 @@
 %************************************************Ready v1
 \chapter{Frameworks for multi-platform development}\label{ch:frameworks}
 %************************************************
+
+%*******DESCRIBE MEANING OF NATIVE***********
+
 There are numerous frameworks that have been developed over the years to facilitate the creation of multi-platform applications. Just like in the 90s, when vendors saw market opportunities in releasing multi-platform applications for the desktop, most of the solutions available for cross-platform mobile development are of the commercial nature.
 
 
-However, \marginpar{PhoneGap is the commercial name of the Apache Cordova Open Source Project.} some open source players do exist. They have been gaining popularity and better features over time, some have even been backed by bigger organisations, and now offer both free and commercial packages. Examples worth noting in this category are PhoneGap, backed by Adobe\footnote{\url{http://www.adobe.com/}} and MonoTouch, backed by Xamarin\footnote{\url{http://xamarin.com/}}.
-\graffito{MonoTouch is an open source implementation of Microsoft's .NET Framework.}
+However, \marginpar{PhoneGap is the commercial name of the Apache Cordova Open Source Project.} some open source players do exist. They have been gaining popularity and better features over time, some have even been backed by bigger organizations, and now offer both free and commercial packages. Examples worth noting in this category are PhoneGap, backed by Adobe\footnote{\url{http://www.adobe.com/}} and Mono, backed by Xamarin\footnote{\url{http://xamarin.com/}}.
+\graffito{Mono is an open source implementation of Microsoft's .NET Framework.}
 
 \section{Types of Frameworks}
 When it comes to choosing the adequate framework to use for the development of your application, there are many options that vary in number of features, pricing and support; but they can all be sorted into three distinct categories, based on the type of application they produce at the end. These categories are:
@@ -23,13 +26,13 @@ You should always keep in mind the advantages and drawbacks of each when choosin
     \tableheadline{Name} & \tableheadline{Language} & \tableheadline{Type}\\ 
     \midrule
     Web frameworks & HTML \& Javascript & Web App\\
-    Alloy & HTML, JS \& XML & Hybrid\\
+    Alloy & HTML, JS \& XML & Hybrid \& Pseudo-Native\\
     Corona SDK & Lua & Pseudo-Native\\
     Embarcadero & Delphi \& C++ & Pseudo-Native\\
     Icenium\textsuperscript{*} & Javascript & Hybrid\\
     Intel XDK\textsuperscript{*} & Javascript & Hybrid\\
     PhoneGap\textsuperscript{*} & Javascript & Hybrid\\
-    Rhodes & Ruby \& Javascript & Hybrid\\
+    Rhodes & Ruby \& HTML5 & Hybrid\\
     Titanium & Javascript & Hybrid \& Pseudo-Native\\
     Xamarin & C\# + Native UI & Pseudo-Native\\      
     %\midrule
@@ -76,7 +79,7 @@ With \spacedlowsmallcaps{Separate Files} you will have to redirect visitors usin
 These frameworks, however, cannot run inside the mobile device; they need to run on a server, which means that the only way to access the application is through a web browser.
 
 
-This line of action is best suited for smaller projects that want to present their website or web application in a better way to mobile users, but don't have the resources to hire a full time application developer. They can use the designer they have at hand and just optimise their online presence for portable devices.
+This line of action is best suited for smaller projects that want to present their website or web application in a better way to mobile users, but don't have the resources to hire a full time application developer. They can use the designer they have at hand and just optimize their online presence for portable devices.
 
 \subsection{Hybrid Applications}\label{sec:hyb_app}
 \begin{quotation}
@@ -89,17 +92,17 @@ With Hybrid Applications the HTML, et al. are contained within a native package,
 
 By having access to these features, Hybrid Applications can behave like native applications and, since they are contained within a native package, there is no need for the user to open a web browser. It also gives you the advantage of distributing your application via the platform's store.
 
-This approach gives you many added benefits over a normal HTML5 Application, with just some trade-offs. There is a learning curve when dealing with the programming frameworks, but the design and layout are still done in HTML and CSS. One of the main benefits you get is that you now have the possibility to make your application available offline and of course the access to system features, like push notifications. 
+This approach gives you many added benefits over a normal HTML5 Application, with just some trade-offs. There is a learning curve involved when dealing with the programming frameworks, but the design and layout are still done in HTML and CSS. One of the main benefits you get is that you now have the possibility to make your application available offline and of course the access to system features, like push notifications. 
 
 The downside is that every piece of the \ac{UI} \textsc{needs} to be done in CSS and HTML. There are no native controls, so your application will not look exactly as a native application, and some very important native features may not be available to you. Depending on the framework you choose, you may not have access to security features, like encryption of resources, or low level features, like background services.  
 
 This approach is best suited for projects that want to offer more functionality with their mobile applications and are willing to invest some time in learning a new framework.  
 
 \subsection{Pseudo-Native Applications}\label{sec:pseudo_app}
-\spacedlowsmallcaps{Pseudo-Native Applications} are completely different from the other two types. They do not rely on HTML for the \ac{UI} or on Javascript for communication with native features. These applications are \textsc{compiled} to native code and appear to the device as being truly native.
+\spacedlowsmallcaps{Pseudo-Native Applications} are completely different from the other two types. They do not rely on HTML for the \ac{UI}. These applications are \textsc{compiled} to native code and appear to the device as native.
 
 
-The way the \ac{UI} is programmed varies between the different frameworks. It can be done using the native tools of each platform; using a visual designer provided by the framework or programatically, using the libraries provided.
+The way the \ac{UI} is programmed varies between the different frameworks. It can be done using the native tools of each platform; using a visual designer provided by the framework or programmatically, using the libraries provided.
 
 Independently from which method is used for the \ac{UI}, the business logic is always done separately in an effort to abstract as much shared functionality as possible and keep platform specific code to a minimum.
 
@@ -109,7 +112,7 @@ Let's take a look at the advantages offered by this type of applications:
 
 \begin{description}
 
-\item[Speed:] By not using any interpreted languages, code performance is increased. This is crucial for applications that need to do a lot of calculations quickly or that rely on the assessment of large amounts of data.
+\item[Speed:] Depending on the framework you choose, your entire code can be compiled to native binaries, thus performance can be increased. This is crucial for applications that need to do a lot of calculations quickly or that rely on the assessment of large amounts of data.
 
 \item[Flexibility:] Since the \ac{UI} code is not shared between platforms, it gives you the flexibility to adapt and modify the layout of your application depending on which device is running it. It also gives your application a truly native look \& feel and not an emulated one.
 
