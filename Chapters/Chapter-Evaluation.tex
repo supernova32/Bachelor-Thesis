@@ -14,7 +14,7 @@ Before we begin with what sets each framework apart, let's take a look at the si
 
 \begin{description}
 \item[Separate UI implementation:] In order to gain a native look \& feel, the implementation can be done individually for each platform you plan to support.
-\item[Distribution:] Both frameworks create installable packages for each platform, allowing easy distribution to the platform's store.
+\item[Distribution:] Both frameworks create installable packages for each platform, allowing for easy distribution to the platform's store.
 \item[Pricing:] Both frameworks offer free and paid packages, though they differ greatly in features offered.   
 \end{description}
 
@@ -25,6 +25,13 @@ After Novell laid off the entire workforce dedicated to maintaining Mono, the op
 
 \subsection{Language \& Services}
 Xamarin uses C\# as the main programming language, thus leveraging its standard library and every external library that can run on the .NET Framework.
+
+The .NET Framework works much like the Java \ac{VM}. When the user compiles the source code, the compiler translates it to an \ac{IL}. This \ac{IL} runs on top of the \ac{VM} and, depending on the platform, it is then compiled to bytecode either \ac{AOT} for iOS or \ac{JIT} for Android and Windows Phone.
+
+\begin{description}
+\item[AOT:] Ahead of Time Compilation translates the \ac{IL} to bytecode before the application is installed to the device. This must be done for iOS devices, because Apple restricts the use of dynamic code generation.
+\item[JIT:] Just In Time Compilation translates the \ac{IL} to bytecode right before it is needed, thus giving more flexibility to the code and allowing for dynamic code generation and more in-depth reflections. 
+\end{description}   
 
 Xamarin also offers an array of free prime-components to its Enterprise Customers, offering pre-built packages to make development of large applications easier and faster, such as \ac{UI} controls, themes \& libraries.
 
@@ -51,6 +58,8 @@ Spanning icon libraries, UI components, advertising and encryption, our Marketpl
 \subsection{Language \& Services}
 Titanium uses Javascript as the main programming language, but it uses a special set of libraries called CommonJS in order to optimize its \ac{API}.
 
+Javascript is a language that is interpreted at runtime. Given that Runtime Interpretation can be slow, Titanium compiles some of its modules to native code. However, most of your code will be interpreted.
+
 One of the biggest features of Titanium is the possibility of using the Titanium Cloud Services, a Mobile Backend as a Service (MBaaS), offering a fast and easy way to build connected mobile apps. Developers can choose from a library of services such as push notification, status updates, photo storage, and social integration, or create their own custom cloud services.\footnote{\url{http://www.appcelerator.com/cloud/}} 
 
 
@@ -64,7 +73,7 @@ For the development of \ac{UI} elements you can only rely on the different \ac{A
 
 %*******************
 \section{Putting them to the test}
-Now that we know exactly what sets each framework apart and what they do best, we can take a more focused approach at testing them according to a specific criteria. This criteria can be broken up into the following characteristics:
+Now that we know exactly what sets each framework apart, we can take a more focused approach at testing them according to a specific criteria. This criteria can be broken up into the following characteristics:
 
 \begin{itemize}
 %\item We need our application to comply with German Data Protection Laws, so we need it to provide encryption for personal data and for the database.
@@ -104,7 +113,7 @@ But debugging and testing aren't the only factors that can affect productivity. 
     Documentation & Excellent & Excellent\\
     Debug \& Test & Excellent & Sub-Par\\
     Compilation & Native Binary & Binary + Interpreter\\
-    Learning Curve & Hard & Medium\\
+    Learning Curve & Medium & Easy\\
     \tableheadline{IDE Features:} & &\\
     \midrule
     Code Autocomplete & \ding{52} & \ding{52}\\
@@ -124,9 +133,9 @@ Compilation is also a factor that may affect productivity. Since all of the C\# 
 
 %!!!!!!!!!!!!!!!!  
 \subsection{Performance}
-The performance of a mobile application is not something that is extremely crucial when choosing between two Pseudo-Native Frameworks. It is already clear that Pseudo-Native has better performance than Hybrid, and if you really need all the performance optimizations you can get, then the best choice is to go native. 
+The performance of a mobile application is something that is crucial when choosing between two frameworks. We already know that Pseudo-Native has better performance than Hybrid and if you want the best performance available, then the best choice is to go native. 
 
-There is however the expected notion that an app shouldn't take longer than 5 seconds to load and it should react swiftly to any user input.\footnote{\url{http://uxdesign.smashingmagazine.com/2011/07/18/seven-guidelines-for-designing-high-performance-mobile-user-experiences/}} Otherwise the user might dismiss the application and never open it again.\footnote{\url{http://readwrite.com/2012/07/24/infographic-what-is-slowing-down-your-mobile-apps}}
+We should consider, however, the expected notion that an app shouldn't take longer than 5 seconds to load and that it should react swiftly to any user input.\footnote{\url{http://uxdesign.smashingmagazine.com/2011/07/18/seven-guidelines-for-designing-high-performance-mobile-user-experiences/}} Otherwise the user might dismiss the application and never open it again.\footnote{\url{http://readwrite.com/2012/07/24/infographic-what-is-slowing-down-your-mobile-apps}}
 
 Given that Xamarin compiles all your code to a native binary, there is little overhead in performance, and with true native \ac{UI} implementation, animations and user input can run smoothly. It is, however, still up to the developer to guarantee a good user experience. 
 
@@ -134,7 +143,8 @@ With Titanium, most of the code is interpreted and thus relies on the speed of t
 
 When you also consider the fact that some of Titanium's \ac{UI} components are generically designed to work on different platforms, the overhead brought forth by the need for compatibility becomes obvious.
 
-There are some techniques that a developer can utilize to try to counter these effects. You can optimize your code to load the visible parts of the application first; use caching in order to present the user some information, while the current information loads in the background or isolate the slower parts of the application and try to break them up into multiple steps, so that the user sees these steps as necessary for the flow of the application and not as the app slowing down.\footnote{\url{http://ux.stackexchange.com/questions/34738/activity-response-startup-times}}  
+There are some techniques that a developer can utilize to try to counter these effects. You can optimize your code to load the visible parts of the application first; use caching in order to present the user some information, while the current information loads in the background or isolate the slower parts of the application and try to break them up into multiple steps, so that the user sees these steps as necessary for the flow of the application and not as the app slowing down.\footnote{\url{http://ux.stackexchange.com/questions/34738/activity-response-startup-times}}
+  
 
    
 \subsection{Maintainability}
@@ -203,7 +213,7 @@ An important difference between Xamarin and Titanium is the way they handle the 
 
 \begin{description}
 \item[Xamarin] requires you to develop the \ac{UI} for each platform independently, which means that you will have to maintain a larger number of files.
-\item[Titanium] gathers common elements from both supported platforms (iOS \& Android) and puts them in a common namespace, allowing you to reduce the amount of code necessary for simple \ac{UI} elements. You still need to keep separate implementations for elements unique to each platform.
+\item[Titanium] gathers common elements from both supported platforms (iOS \& Android) and puts them in a common namespace, allowing you to reduce the amount of code necessary for simple \ac{UI} elements. Nonetheless, you still need to keep separate implementations for elements unique to each platform.
 \end{description}
 \vfill
 
@@ -260,11 +270,11 @@ Both frameworks provide a free package, \textsc{but} Xamarin's free package has 
   \caption[Free features of Xamarin \& Titanium]{Free features of Xamarin \& Titanium} \label{tab:price}
 \end{table}
 
-The biggest and perhaps the only important limitations of Xamarin are the limited app size; for the starter package you are limited to 32KB of \ac{IL} code size; and the restriction of native libraries. You can't create a binding, or use an existing one, to connect to a library written in one of the platform's native language. 
+The biggest and perhaps the only important limitations of Xamarin are the limited app size; for the starter package you are limited to 32KB of \ac{IL} code size; and the restriction of native libraries. You can't create a binding, or use an existing one, to connect to a library written in one of the platform's native language.\footnote{\url{http://xamarin.com/ios}} 
 
-In order to lift these limitations you have to upgrade to at least the Indie Package, which costs \$299 per platform per year and is only licensed to an individual programmer. A company looking to give access to more than one developer needs to buy the Business Package for \$999 per developer per platform per year.
+In order to lift these limitations you have to upgrade to at least the Indie Package, which costs \$299 per platform per year and is only licensed to an individual programmer. A company looking to give access to more than one developer needs to buy the Business Package for \$999 per developer per platform per year.\footnote{\url{https://store.xamarin.com/}}
 
-Titanium also blocks some of its features behind a paywall, although these are most appealing to business and enterprise customers. There is no readily available information on Appcelerator's pricing scheme for Titanium. The only way of accessing the prices is to contact them with your information and have them send you a quote.
+Titanium also blocks some of its features behind a paywall, although these are most appealing to business and enterprise customers. There is no readily available information on Appcelerator's pricing scheme for Titanium. The only way of accessing the prices is to contact them with your information and have them send you a quote.\footnote{\url{http://www.appcelerator.com/plans-pricing/}}
 
 \subsection{Community}
 A thriving community is important if you ever run into a problem or issue that you have no idea how to solve. Thankfully both frameworks have been around for a long enough time to have built a good sized community. A simple Google search will yield you a vast number of already answered questions in StackOverflow\marginpar{StackOverflow is a Q\&A website designed to help programmers}. Both frameworks have dedicated tags that should help you find the questions and answers you are looking for.
@@ -278,9 +288,30 @@ Each company also provides its users with free forums where you can ask your que
 %*******************
 \section{Conclusion}
 
-After all the evaluations, we can see that ... adjusts the best to our needs. 
+To make the decision between frameworks a bit more mathematical, we will distribute points for each of the criteria previously mentioned and will be scoring each framework based on their features and shortcomings.
 
+\begin{table}[H]
+    \myfloatalign
+  \begin{tabularx}{\textwidth}{Xll} \toprule
+    \tableheadline{} & \tableheadline{Xamarin} & \tableheadline{Titanium}\\ 
+    \midrule
+    Productivity & 17/20 & 15/20\\
+    Maintainability & 19/25 & 20/25\\ 
+    Performance & 18.5/20 & 14/20\\
+    Language Features & 9/10 & 7/10\\
+    Pricing & 2.5/5 & 5/5\\
+    Community & 17/20 & 16/20\\
+    \midrule
+    \textsc{Total} & 83/100 & 77/100 \\ %(1.426) (1.164)     
+    \bottomrule
+  \end{tabularx}
+  \caption[Summary and Score for both Frameworks]{Summary and Score} \label{tab:score}
+\end{table}
 
+We devised the scoring scheme, so that the aspects we find most important would have higher possible scores. Based on what we tallied from all of the criteria we discussed in detail before, we can see that the difference between both frameworks is not that big. Both have their strengths and weaknesses, but they are completely capable of delivering a solid experience and producing great apps.
+
+There is, however, a clear winner based on what we value the most. For all the reasons previously stated and based on the score above we choose \textsc{Xamarin} as the framework for the development of the MHM Job Portal Aggregator.
+\newline
 
 
 Now that we have chosen the right framework for our endeavor, we can take a look at the next piece of the puzzle. Before we can start with the development of the application, we still need to discuss a very important part of almost all current applications; a connection to the cloud. 
