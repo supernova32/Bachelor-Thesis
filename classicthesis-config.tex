@@ -119,7 +119,8 @@
 %**my packages**
 \usepackage[super]{nth}
 \usepackage[hyphens]{url}
-\usepackage{pifont} 
+\usepackage{pifont}
+
 % ****************************************************************************************************
 
 
@@ -144,7 +145,36 @@
     frame=single,
     belowcaptionskip=.75\baselineskip
     %frame=L
-} 
+}
+
+\usepackage{color}
+\definecolor{gray}{rgb}{0.4,0.4,0.4}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
+\definecolor{cyan}{rgb}{0.0,0.6,0.6}
+
+\lstset{
+  basicstyle=\ttfamily,
+  columns=fullflexible,
+  showstringspaces=false,
+  commentstyle=\color{gray}\upshape
+}
+
+\lstdefinelanguage{XML}
+{
+  morestring=[b]",
+  morestring=[s]{>}{<},
+  morecomment=[s]{<?}{?>},
+  stringstyle=\color{black},
+  identifierstyle=\color{darkblue},
+  keywordstyle=\color{cyan},
+  morekeywords={xmlns,version,type}% list your attributes here
+}
+
+%\lstdefinelanguage{JSON}
+%{
+%  
+%} 
+ 
 % ****************************************************************************************************    		   
 
 
@@ -259,7 +289,8 @@
 % ********************************************************************
 % Last, but not least...
 % ********************************************************************
-\usepackage{classicthesis} 
+\usepackage{classicthesis}
+%\usepackage{minted} 
 % ****************************************************************************************************
 
 
