@@ -4,40 +4,9 @@
 
 \paragraph{Important Note:} Some things of this style might look
 unusual at first glance, many people feel so in the beginning.
-However, all things are intentionally designed to be as they are,
-especially these:
+However, all things are intentionally designed to be as they are.
 
 
-\begin{lstlisting}[frame=lt]
-% **************************************************
-% 2. Personal data and user ad-hoc commands
-% **************************************************
-\newcommand{\myTitle}{A Classic Thesis Style\xspace} 
-\newcommand{\mySubtitle}{An Homage to...\xspace} 
-\end{lstlisting}
-
-Further customization can be made in \texttt{classicthesis-config.tex}
-by choosing the options to \texttt{classicthesis.sty} in a line that looks like this:
-
-\begin{lstlisting}[frame=lt]
-\PassOptionsToPackage{eulerchapternumbers,drafting,listings,subfig,eulermath,parts}{classicthesis}
-\end{lstlisting}
-
-If you want to use backreferences from your citations to the pages
-they were cited on, change the following line from:
-\begin{lstlisting}[breaklines=false,frame=lt]
-\setboolean{enable-backrefs}{false} % true false
-\end{lstlisting}
-to
-\begin{lstlisting}[breaklines=false,frame=lt]
-\setboolean{enable-backrefs}{true} % true false
-\end{lstlisting}
-
-This can be solved by passing \texttt{es-tabla} parameter to \texttt{babel}:
-\begin{verbatim}
-	\PassOptionsToPackage{es-tabla,spanish,es-lcroman,english}{babel}
-	\usepackage{babel}
-\end{verbatim}
 
 \section{Writing Conventions}
 Newly introduced concepts that are relevant to a chapter will be described there, for all other concepts, please refer to the Glossary (\autoref{glos}).

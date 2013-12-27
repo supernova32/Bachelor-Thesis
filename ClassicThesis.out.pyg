@@ -1,0 +1,94 @@
+\begin{Verbatim}[commandchars=\\\{\}, ]
+\PYZbs{}makeatletter
+\PYZbs{}def\PYZbs{}PY@reset\PYZob{}\PYZbs{}let\PYZbs{}PY@it=\PYZbs{}relax \PYZbs{}let\PYZbs{}PY@bf=\PYZbs{}relax\PYZpc{}
+    \PYZbs{}let\PYZbs{}PY@ul=\PYZbs{}relax \PYZbs{}let\PYZbs{}PY@tc=\PYZbs{}relax\PYZpc{}
+    \PYZbs{}let\PYZbs{}PY@bc=\PYZbs{}relax \PYZbs{}let\PYZbs{}PY@ff=\PYZbs{}relax\PYZcb{}
+\PYZbs{}def\PYZbs{}PY@tok\PYZsh{}1\PYZob{}\PYZbs{}csname PY@tok@\PYZsh{}1\PYZbs{}endcsname\PYZcb{}
+\PYZbs{}def\PYZbs{}PY@toks\PYZsh{}1+\PYZob{}\PYZbs{}ifx\PYZbs{}relax\PYZsh{}1\PYZbs{}empty\PYZbs{}else\PYZpc{}
+    \PYZbs{}PY@tok\PYZob{}\PYZsh{}1\PYZcb{}\PYZbs{}expandafter\PYZbs{}PY@toks\PYZbs{}fi\PYZcb{}
+\PYZbs{}def\PYZbs{}PY@do\PYZsh{}1\PYZob{}\PYZbs{}PY@bc\PYZob{}\PYZbs{}PY@tc\PYZob{}\PYZbs{}PY@ul\PYZob{}\PYZpc{}
+    \PYZbs{}PY@it\PYZob{}\PYZbs{}PY@bf\PYZob{}\PYZbs{}PY@ff\PYZob{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}\PYZcb{}\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}def\PYZbs{}PY\PYZsh{}1\PYZsh{}2\PYZob{}\PYZbs{}PY@reset\PYZbs{}PY@toks\PYZsh{}1+\PYZbs{}relax+\PYZbs{}PY@do\PYZob{}\PYZsh{}2\PYZcb{}\PYZcb{}
+
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@gd\PYZbs{}endcsname\PYZob{}\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.63,0.00,0.00\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@gu\PYZbs{}endcsname\PYZob{}\PYZbs{}let\PYZbs{}PY@bf=\PYZbs{}textbf\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.50,0.00,0.50\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@gt\PYZbs{}endcsname\PYZob{}\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.00,0.27,0.87\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@gs\PYZbs{}endcsname\PYZob{}\PYZbs{}let\PYZbs{}PY@bf=\PYZbs{}textbf\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@gr\PYZbs{}endcsname\PYZob{}\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}1.00,0.00,0.00\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@cm\PYZbs{}endcsname\PYZob{}\PYZbs{}let\PYZbs{}PY@it=\PYZbs{}textit\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.25,0.50,0.50\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@vg\PYZbs{}endcsname\PYZob{}\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.10,0.09,0.49\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@m\PYZbs{}endcsname\PYZob{}\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.40,0.40,0.40\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@mh\PYZbs{}endcsname\PYZob{}\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.40,0.40,0.40\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@go\PYZbs{}endcsname\PYZob{}\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.53,0.53,0.53\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@ge\PYZbs{}endcsname\PYZob{}\PYZbs{}let\PYZbs{}PY@it=\PYZbs{}textit\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@vc\PYZbs{}endcsname\PYZob{}\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.10,0.09,0.49\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@il\PYZbs{}endcsname\PYZob{}\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.40,0.40,0.40\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@cs\PYZbs{}endcsname\PYZob{}\PYZbs{}let\PYZbs{}PY@it=\PYZbs{}textit\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.25,0.50,0.50\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@cp\PYZbs{}endcsname\PYZob{}\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.74,0.48,0.00\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@gi\PYZbs{}endcsname\PYZob{}\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.00,0.63,0.00\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@gh\PYZbs{}endcsname\PYZob{}\PYZbs{}let\PYZbs{}PY@bf=\PYZbs{}textbf\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.00,0.00,0.50\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@ni\PYZbs{}endcsname\PYZob{}\PYZbs{}let\PYZbs{}PY@bf=\PYZbs{}textbf\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.60,0.60,0.60\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@nl\PYZbs{}endcsname\PYZob{}\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.63,0.63,0.00\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@nn\PYZbs{}endcsname\PYZob{}\PYZbs{}let\PYZbs{}PY@bf=\PYZbs{}textbf\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.00,0.00,1.00\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@no\PYZbs{}endcsname\PYZob{}\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.53,0.00,0.00\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@na\PYZbs{}endcsname\PYZob{}\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.49,0.56,0.16\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@nb\PYZbs{}endcsname\PYZob{}\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.00,0.50,0.00\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@nc\PYZbs{}endcsname\PYZob{}\PYZbs{}let\PYZbs{}PY@bf=\PYZbs{}textbf\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.00,0.00,1.00\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@nd\PYZbs{}endcsname\PYZob{}\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.67,0.13,1.00\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@ne\PYZbs{}endcsname\PYZob{}\PYZbs{}let\PYZbs{}PY@bf=\PYZbs{}textbf\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.82,0.25,0.23\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@nf\PYZbs{}endcsname\PYZob{}\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.00,0.00,1.00\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@si\PYZbs{}endcsname\PYZob{}\PYZbs{}let\PYZbs{}PY@bf=\PYZbs{}textbf\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.73,0.40,0.53\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@s2\PYZbs{}endcsname\PYZob{}\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.73,0.13,0.13\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@vi\PYZbs{}endcsname\PYZob{}\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.10,0.09,0.49\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@nt\PYZbs{}endcsname\PYZob{}\PYZbs{}let\PYZbs{}PY@bf=\PYZbs{}textbf\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.00,0.50,0.00\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@nv\PYZbs{}endcsname\PYZob{}\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.10,0.09,0.49\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@s1\PYZbs{}endcsname\PYZob{}\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.73,0.13,0.13\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@sh\PYZbs{}endcsname\PYZob{}\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.73,0.13,0.13\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@sc\PYZbs{}endcsname\PYZob{}\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.73,0.13,0.13\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@sx\PYZbs{}endcsname\PYZob{}\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.00,0.50,0.00\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@bp\PYZbs{}endcsname\PYZob{}\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.00,0.50,0.00\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@c1\PYZbs{}endcsname\PYZob{}\PYZbs{}let\PYZbs{}PY@it=\PYZbs{}textit\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.25,0.50,0.50\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@kc\PYZbs{}endcsname\PYZob{}\PYZbs{}let\PYZbs{}PY@bf=\PYZbs{}textbf\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.00,0.50,0.00\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@c\PYZbs{}endcsname\PYZob{}\PYZbs{}let\PYZbs{}PY@it=\PYZbs{}textit\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.25,0.50,0.50\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@mf\PYZbs{}endcsname\PYZob{}\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.40,0.40,0.40\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@err\PYZbs{}endcsname\PYZob{}\PYZbs{}def\PYZbs{}PY@bc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}setlength\PYZob{}\PYZbs{}fboxsep\PYZcb{}\PYZob{}0pt\PYZcb{}\PYZbs{}fcolorbox[rgb]\PYZob{}1.00,0.00,0.00\PYZcb{}\PYZob{}1,1,1\PYZcb{}\PYZob{}\PYZbs{}strut \PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@kd\PYZbs{}endcsname\PYZob{}\PYZbs{}let\PYZbs{}PY@bf=\PYZbs{}textbf\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.00,0.50,0.00\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@ss\PYZbs{}endcsname\PYZob{}\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.10,0.09,0.49\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@sr\PYZbs{}endcsname\PYZob{}\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.73,0.40,0.53\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@mo\PYZbs{}endcsname\PYZob{}\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.40,0.40,0.40\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@kn\PYZbs{}endcsname\PYZob{}\PYZbs{}let\PYZbs{}PY@bf=\PYZbs{}textbf\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.00,0.50,0.00\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@mi\PYZbs{}endcsname\PYZob{}\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.40,0.40,0.40\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@gp\PYZbs{}endcsname\PYZob{}\PYZbs{}let\PYZbs{}PY@bf=\PYZbs{}textbf\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.00,0.00,0.50\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@o\PYZbs{}endcsname\PYZob{}\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.40,0.40,0.40\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@kr\PYZbs{}endcsname\PYZob{}\PYZbs{}let\PYZbs{}PY@bf=\PYZbs{}textbf\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.00,0.50,0.00\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@s\PYZbs{}endcsname\PYZob{}\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.73,0.13,0.13\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@kp\PYZbs{}endcsname\PYZob{}\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.00,0.50,0.00\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@w\PYZbs{}endcsname\PYZob{}\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.73,0.73,0.73\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@kt\PYZbs{}endcsname\PYZob{}\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.69,0.00,0.25\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@ow\PYZbs{}endcsname\PYZob{}\PYZbs{}let\PYZbs{}PY@bf=\PYZbs{}textbf\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.67,0.13,1.00\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@sb\PYZbs{}endcsname\PYZob{}\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.73,0.13,0.13\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@k\PYZbs{}endcsname\PYZob{}\PYZbs{}let\PYZbs{}PY@bf=\PYZbs{}textbf\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.00,0.50,0.00\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@se\PYZbs{}endcsname\PYZob{}\PYZbs{}let\PYZbs{}PY@bf=\PYZbs{}textbf\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.73,0.40,0.13\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+\PYZbs{}expandafter\PYZbs{}def\PYZbs{}csname PY@tok@sd\PYZbs{}endcsname\PYZob{}\PYZbs{}let\PYZbs{}PY@it=\PYZbs{}textit\PYZbs{}def\PYZbs{}PY@tc\PYZsh{}\PYZsh{}1\PYZob{}\PYZbs{}textcolor[rgb]\PYZob{}0.73,0.13,0.13\PYZcb{}\PYZob{}\PYZsh{}\PYZsh{}1\PYZcb{}\PYZcb{}\PYZcb{}
+
+\PYZbs{}def\PYZbs{}PYZbs\PYZob{}\PYZbs{}char`\PYZbs{}\PYZbs{}\PYZcb{}
+\PYZbs{}def\PYZbs{}PYZus\PYZob{}\PYZbs{}char`\PYZbs{}\PYZus{}\PYZcb{}
+\PYZbs{}def\PYZbs{}PYZob\PYZob{}\PYZbs{}char`\PYZbs{}\PYZob{}\PYZcb{}
+\PYZbs{}def\PYZbs{}PYZcb\PYZob{}\PYZbs{}char`\PYZbs{}\PYZcb{}\PYZcb{}
+\PYZbs{}def\PYZbs{}PYZca\PYZob{}\PYZbs{}char`\PYZbs{}\PYZca{}\PYZcb{}
+\PYZbs{}def\PYZbs{}PYZam\PYZob{}\PYZbs{}char`\PYZbs{}\PY{err}{\PYZam{}}\PYZcb{}
+\PYZbs{}def\PYZbs{}PYZlt\PYZob{}\PYZbs{}char`\PYZbs{}\PY{err}{\PYZlt{}}\PYZcb{}
+\PYZbs{}def\PYZbs{}PYZgt\PYZob{}\PYZbs{}char`\PYZbs{}\PYZgt{}\PYZcb{}
+\PYZbs{}def\PYZbs{}PYZsh\PYZob{}\PYZbs{}char`\PYZbs{}\PYZsh{}\PYZcb{}
+\PYZbs{}def\PYZbs{}PYZpc\PYZob{}\PYZbs{}char`\PYZbs{}\PYZpc{}\PYZcb{}
+\PYZbs{}def\PYZbs{}PYZdl\PYZob{}\PYZbs{}char`\PYZbs{}\PYZdl{}\PYZcb{}
+\PYZbs{}def\PYZbs{}PYZhy\PYZob{}\PYZbs{}char`\PYZbs{}\PYZhy{}\PYZcb{}
+\PYZbs{}def\PYZbs{}PYZsq\PYZob{}\PYZbs{}char`\PYZbs{}\PYZsq{}\PYZcb{}
+\PYZbs{}def\PYZbs{}PYZdq\PYZob{}\PYZbs{}char`\PYZbs{}\PYZdq{}\PYZcb{}
+\PYZbs{}def\PYZbs{}PYZti\PYZob{}\PYZbs{}char`\PYZbs{}\PYZti{}\PYZcb{}
+\PYZpc{} for compatibility with earlier versions
+\PYZbs{}def\PYZbs{}PYZat\PYZob{}@\PYZcb{}
+\PYZbs{}def\PYZbs{}PYZlb\PYZob{}[\PYZcb{}
+\PYZbs{}def\PYZbs{}PYZrb\PYZob{}]\PYZcb{}
+\PYZbs{}makeatother
+\end{Verbatim}
