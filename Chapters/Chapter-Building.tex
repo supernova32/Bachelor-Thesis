@@ -115,12 +115,10 @@ namespace MHMBase
 				return currentInstance;			
 			}
 		}
-
 		DatabaseHelper () {
 			string folder = System.Environment.GetFolderPath (System.Environment.SpecialFolder.Personal);
 			db = new SQLiteConnection (System.IO.Path.Combine (folder, "mhm-jpa.db"));		
 		}
-
 		public SQLiteConnection Connection {
 			get { return db; }		
 		}
@@ -172,7 +170,7 @@ If it weren't for \textit{SQLite.NET} all of the code previously shown would be 
 Another aspect of the application that is easy to share between platforms is the network access. We can easily use all the built in functionality of C\#'s standard library under \texttt{System.Net} and take advantage of asynchronous communication and \ac{LINQ} for \ac{XML} and \ac{JSON} parsing.
 
 \begin{lstlisting}[frame=lt,caption=PublicationsParser.cs, label={list:db-pubparse}]
-public void UpdatePublications(Action<IList<Publication>> callback, SQLiteConnection db) {
+public void UpdatePublications(Action<IList<Publication>> callback) {
 	db.CreateTable<Publication>();
 	var client = new WebClient ();
 	client.DownloadStringCompleted += (sender, args) => {
@@ -190,7 +188,7 @@ public void UpdatePublications(Action<IList<Publication>> callback, SQLiteConnec
 				Console.WriteLine ("Duplicate detected");
 			}				
 		}
-		callback(GetPublications(db));
+		callback(Publications);
 	};
 	client.DownloadStringAsync (new Uri (_baseUrl));
 }
@@ -206,7 +204,7 @@ Inside this method lives the code that actually takes care of parsing the \ac{XM
 
 Now that we have a list containing \texttt{Publication} objects we can add them to the database. After everything is saved, we can call the \texttt{callback} function passing as argument the \texttt{GetPublications} function that simply retrieves all elements inside the \texttt{Publications} table.
 
-How the \texttt{callback} functions are used and what they do, we will learn later on.
+How the \texttt{callback} functions are used and what they do, will be discussed in \autoref{callback:and} and \autoref{callback:ios}.
 
 \begin{lstlisting}[frame=lt,caption=CompaniesParser.cs,label={list:db-compparse}]
 foreach (var c in companies) {
@@ -240,23 +238,36 @@ Inside our application we use it to deserialize the returned result string, when
 Thanks to \ac{LINQ}, the code in charge of deserializing each element is very similar to the \ac{XML} deserialization code.
 
 \begin{lstlisting}[frame=lt,caption=Publication Search,label={list:search}]
-public void SendSearchParameters(Action<IList<Publication>> callback, string parameters) {
-	var dl = new WebClient();
-	dl.Headers.Add("Content-Type","application/json");
-	dl.UploadStringCompleted += (sender, e) => {
-		var resultJSON = JObject.Parse (e.Result);
-		IList<Publication> publications = resultJSON["publications"].Select(item => new Publication	{
-			RemoteId = (string)item["id"],
-			Title = (string)item["title"],
-			[...]				
-		}).ToList();
-		callback(publications);
-	};
-	dl.UploadStringAsync (new Uri (_searchUrl), parameters);		
+public void SendSearchParameters (Action<IList<Publication>> callback, string parameters) {
+	var http = (HttpWebRequest)WebRequest.Create(new Uri("_baseUrl"));
+	http.Accept = "application/json";
+	http.ContentType = "application/json";
+	http.Method = "POST";
+
+	var jObject = new JObject (new JProperty ("query", parameters));
+	var encoding = new UTF8Encoding();
+	Byte[] bytes = encoding.GetBytes(jObject.ToString());
+
+	var newStream = http.GetRequestStream();
+	newStream.Write(bytes, 0, bytes.Length);
+	newStream.Close();
+
+	var response = http.GetResponse();
+
+	var stream = response.GetResponseStream();
+	var sr = new StreamReader (stream);
+	var content = sr.ReadToEnd();
+	var resultJSON = JObject.Parse (content);
+	IList<Publication> publications = resultJSON["publications"].Select(item => new Publication	{
+		RemoteId = item["id"].ToString(),
+		Title = (string)item["title"],
+		[...]			
+	}).ToList();
+	callback(publications);
 }
 \end{lstlisting}
 
-As \autoref{list:search} shows, we again need a \texttt{WebClient} that takes care of uploading the search parameters to the server and that registers an \texttt{UploadStringCompleted} method that gets executed once the uploading has finished.
+As \autoref{list:search} shows, this time we need perform a \texttt{WebRequest} and upload the search parameters. This request isn't done asynchronously and the resulting string is saved for later processing.
 
 Once we have the result string, it gets parsed by the \texttt{JObject} class from \textit{Newtonsoft JSON}. This creates a \texttt{JObject} that is composed of a \texttt{Collection} of \texttt{JTokens}, each representing a serialized element of the result string. We can then access each item inside the "publications" token via \ac{LINQ} with the \texttt{Select} function and create a \texttt{Publication} object out of each item. All of these \texttt{Publication} objects get packed in a list and then passed to the \texttt{callback} function.
 
@@ -282,7 +293,7 @@ We already discussed most of the functionality of \textit{SQLite.NET} in a previ
 
 \textit{SQLite.NET} also has support for transactions. You can execute database operations inside a transaction and, if something were to fail, the database would be rolled back to the point before the transaction started.
 
-You can also create relationships between objects by adding the \texttt{Indexed} attribute to any model. Going from our application we have the \texttt{CompanyId} field in our \texttt{Publication} model with the \texttt{Indexed} attribute. What this does is
+You can also create relationships between objects by adding the \texttt{Indexed} attribute to any model. Going from our application we could add a \texttt{CompanyId} field to our \texttt{Publication} model and add the \texttt{Indexed} attribute to it. This way we could access all \texttt{Publications} belonging to a \texttt{Company} in an easier way.  
 
 
 
