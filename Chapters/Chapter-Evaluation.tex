@@ -2,11 +2,11 @@
 \chapter{Evaluation of possible frameworks}\label{ch:evaluation}
 %************************************************
 
-There are many developers that are happy with just using HTML \& CSS to style their applications and speed up development, but I believe that a mobile application must be true to the platform on which it runs. You can try to emulate native \ac{UI} elements with CSS, but it is going to take longer than just using true native elements. For that reason the type of app that best suits us is a \textsc{Pseudo-Native Application}. 
+There are many developers that are happy with just using HTML \& CSS to style their applications and speed up development, and other that believe that a mobile application must be true to the platform on which it runs. You can try to emulate native \ac{UI} elements with CSS, but it is going to take longer than just using true native elements. For that reason the type of app that best suits us is a \textsc{Pseudo-Native Application}. 
 
 We want to use the best framework for the development of the Job Portal Aggregator for the MHM eRecruiting Systems, so in this chapter we will discuss two specific frameworks, \emph{Xamarin} and \emph{Titanium}, since each one takes a different approach at creating the \ac{UI} for multi-platform applications and are the most popular.
 
-In order to make an informed decision, we need to evaluate them based on a fixed criteria.
+In order to make an informed decision, we need to evaluate them based on a fixed criteria, which we will discuss in \autoref{criteria}.
 
  
 
@@ -56,7 +56,7 @@ Spanning icon libraries, UI components, advertising and encryption, our Marketpl
  
 
 \subsection{Language \& Services}
-Titanium uses Javascript as the main programming language, but it uses a special set of libraries called CommonJS in order to optimize its \ac{API}.
+Titanium uses Javascript as the main programming language, but it uses a special set of libraries called CommonJS\footnote{\url{http://wiki.commonjs.org/wiki/CommonJS}} in order to optimize its \ac{API}.
 
 Javascript is a language that is interpreted at runtime. Given that Runtime Interpretation can be slow, Titanium compiles some of its modules to native code. However, most of your code will be interpreted.
 
@@ -65,14 +65,14 @@ One of the biggest features of Titanium is the possibility of using the Titanium
 
 
 \subsection{Development Environment \& UI Generation}
-Titanium Studio is the \ac{IDE} provided by Appcelerator for use with their framework. It is a heavily optimized, Eclipse based \ac{IDE} aimed to provide extended features for the Titanium and Alloy Frameworks. Alloy is also developed by Appcelerator and it's purpose is to give a better structure to Titanium Projects by extending Titanium with an \ac{MVC} Framework.
+Titanium Studio is the \ac{IDE} provided by Appcelerator for use with their framework. It is a heavily optimized, Eclipse based \ac{IDE} aimed to provide extended features for the Titanium and Alloy\footnote{\url{http://www.appcelerator.com/platform/alloy/}} Frameworks. Alloy is also developed by Appcelerator and it's purpose is to give a better structure to Titanium Projects by extending Titanium with an \ac{MVC} Framework.
 
 For the development of \ac{UI} elements you can only rely on the different \ac{API} calls provided by Titanium and Alloy. There is no graphical designer, so every change to the layout must be done in code. Titanium does try to simplify this, by placing components that have equivalent counterparts in different platforms within the same namespace.   
 
 
 
 %*******************
-\section{Putting them to the test}
+\section{Putting them to the test}\label{criteria}
 Now that we know exactly what sets each framework apart, we can take a more focused approach at testing them according to a specific criteria. This criteria can be broken up into the following characteristics:
 
 \begin{itemize}
@@ -95,7 +95,7 @@ When talking about productivity among programmers, there a lot of factors to con
 There are many features a framework can have that contribute to the improvement of productivity, the most important one being Debugging and Test Support. A proven development technique designed to increase productivity is \ac{TDD}. It allows for a clear definition of behavior, before the actual coding begins. For this technique to work, the framework you are using needs to have a robust testing and debugging environment.
 
 \begin{description}
-\item[Xamarin] provides integrated support for Unit Tests through its \ac{IDE} and is working on Automated Acceptance Testing for Mobile Apps by supporting the Calabash Open Source Project. Calabash works with Android and iOS and allows you to programmatically interact with your app, just as if a user were using it.\footnote{\url{http://calaba.sh/}} Xamarin is also working on a Test Cloud, capable of running Calabash Tests on a multitude of devices simultaneously\footnote{\url{http://xamarin.com/test-cloud}}. This is specially important for Android Applications, since there are many different devices from different manufacturers with different configurations and different \ac{OS} versions.
+\item[Xamarin] provides integrated support for Unit Tests through its \ac{IDE} and is working on Automated Acceptance Testing for Mobile Apps by supporting the Calabash Open Source Project\footnote{\url{http://calaba.sh/}}. Calabash works with Android and iOS and allows you to programmatically interact with your app, just as if a user were using it. Xamarin is also working on a Test Cloud, capable of running Calabash Tests on a multitude of devices simultaneously\footnote{\url{http://xamarin.com/test-cloud}}. This is specially important for Android Applications, since there are many different devices from different manufacturers with different configurations and different \ac{OS} versions.
 
 Xamarin also provides an excellent debugger that automatically jumps to the section of code where an exception occurs. Combined with breakpoint support and variable inspections Xamarin Studio provides a robust development environment.
 
@@ -182,14 +182,15 @@ There are other aspects relevant to the development of maintainable software who
 
 The architecture pattern the framework uses can also influence the maintainability of your code. The most commonly used architecture patterns are \ac{MVC} and \ac{MVVM}. An architecture pattern should aid you with the separation of concerns and to better structure your files; a good structure is crucial for good maintainability.    
 
-\begin{figure}[bth]
+\begin{figure}[H]
         \myfloatalign
         \subfloat[Model-View-Controller]
         {\includegraphics[width=.483\linewidth]{gfx/mvc}} \quad
         \subfloat[Model-View-ViewModel]
         {\includegraphics[width=.483\linewidth]{gfx/mvvm}} \\
-        \caption[Common software architecture patterns]{Common software architecture patterns}\label{fig:sap}
-\end{figure}  
+        \caption[Common software architecture patterns]{Common software architecture patterns\footnotemark}\label{fig:sap}
+\end{figure}
+\footnotetext{Source: \url{http://en.wikipedia.org/wiki/File:MVC-Process.svg} \& \url{http://blogs.technet.com/b/student/archive/2013/04/15/design-style-programming-xaml-amp-mvvm-continued.aspx}}  
 
 \begin{table}[H]
     \myfloatalign
@@ -212,17 +213,18 @@ Another aspect of maintainability we haven't discussed yet is the amount of code
 An important difference between Xamarin and Titanium is the way they handle the development of the \ac{UI} for each platform.
 
 \begin{description}
-\item[Xamarin] requires you to develop the \ac{UI} for each platform independently, which means that you will have to maintain a larger number of files.
-\item[Titanium] gathers common elements from both supported platforms (iOS \& Android) and puts them in a common namespace, allowing you to reduce the amount of code necessary for simple \ac{UI} elements. Nonetheless, you still need to keep separate implementations for elements unique to each platform.
+\item[Xamarin] requires you to develop the \ac{UI} for each platform independently, which means that you will have to maintain a larger number of files. This also means that much of the work will be done twice, which in turn results in a higher time investment.
+
+\item[Titanium] gathers common elements from both supported platforms (iOS \& Android) and puts them in a common namespace, allowing you to reduce the amount of code necessary for simple \ac{UI} elements. Nonetheless, you still need to keep separate implementations for elements unique to each platform. This doesn't result in quite the same amount of extra work and time investment as with Xamarin, but it is still something to consider.
 \end{description}
 \vfill
 
 
 \subsection{Language Features}
 
-There are some language features that can lower the complexity of a program and ease the development process. This special features usually come from the standard library or each programming language. A very helpful feature are Lambdas, or anonymous functions, and Closures. Lambdas can help reduce the amount of code written, but can increase complexity and Closures provide better flexibility to your code.
+There are some language features that can lower the complexity of a program and ease the development process. This special features usually come from the standard library or each programming language. A very helpful feature are Lambdas, or anonymous functions, and Closures\marginpar{This terms are defined in the Appendix section}. Lambdas can help reduce the amount of code written, but can increase complexity and Closures provide better flexibility to your code.
 
-Other features like \ac{LINQ} make it easier to process data from arrays, enumerable classes, XML documents, relational databases and third-party data sources.\footnote{\url{http://en.wikipedia.org/wiki/Language_Integrated_Query}} 
+Other features like \ac{LINQ}\footnote{\url{http://en.wikipedia.org/wiki/Language_Integrated_Query}} make it easier to process data from arrays, enumerable classes, XML documents, relational databases and third-party data sources. 
 
 \begin{table}[H]
     \myfloatalign

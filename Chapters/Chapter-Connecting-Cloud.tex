@@ -1,5 +1,5 @@
 %************************************************
-\chapter{Connecting to a Cloud Service}\label{ch:introduction}
+\chapter{Connecting to a Cloud Service}\label{ch:conn_cloud}
 %************************************************
 
 There are multiple ways of connecting to the different types of cloud services. They vary greatly depending on wich type you want to address. Since we only need to connect to a \ac{SaaS} based service, we will only discuss the possible connection alternatives for it.
@@ -31,7 +31,7 @@ Communication with a RESTful service is done via HTTP and can be managed via its
     \midrule
     GET & /publications/1 & Show Publication with id: 1\\
     DELETE & /publications/1 & Delete Publication with id: 1\\
-    PATCH & /publications/1 & Change Publication with id: 1\\
+    PATCH & /publications/1 & Update Publication with id: 1\\
     GET & /publications & See all Publications\\
     POST & /publications & Create new Publication\\         
     \bottomrule
@@ -64,6 +64,27 @@ Compared to a RESTful API, WebSockets are more difficult to implement, but that 
 In the end it depends on the type of application to which you want to connect. A chat client or multiplayer game, for example, needs constant communication with the cloud service. An application like Twitter need information from the service often, but doesn't need an always open connection.
 
 The Job Portal Aggregator works more like Twitter, than a multiplayer game, and doesn't need constant communication with the server, so our method for connecting to the MHM servers will be a RESTful \ac{API}.
+\newpage
+\section{Security, Encryption and Authentication}
+Whenever you transmit data between computing devices the question about how secure your data is, will always arise. Independently of the type of connection used, you should always consider encrypting your data.
+
+Since we are communicating with web services here, using the \spacedlowsmallcaps{HTTPS} protocol will guarantee that all communication between the application and the cloud service will be encrypted. With encryption you can make sure that if there is someone snooping on your connection, they will have a really hard time making sense of the data you are transmitting.
+
+But sometimes encryption is not enough, you also want to protect yourself against unauthorized access. There are several authentication methods, but we are only interested in the most popular ones:
+
+\begin{description}
+\item[Username/Password based] This is the most used form of authentication. Almost every website uses it and it relies on the creation of an account on the server's database that saves the username and the encrypted password. When the user tries to authenticate, the password he provided gets encrypted and if it matches the one on the database, access is granted.
+
+\item[Public Key based] Public-key encryption (also called asymmetric encryption) involves a pair of keys, a public key and a private key, associated with an entity that needs to authenticate its identity electronically or to sign or encrypt data. Each public key is published, and the corresponding private key is kept secret. Data encrypted with the public key can be decrypted only with the private key and vice versa.\footnote{\url{https://developer.mozilla.org/en/docs/Introduction_to_Public-Key_Cryptography}} 
+
+\item[Certificate based] A certificate is an electronic document used to identify an individual, a server, a company, or some other entity and to associate that identity with a public key. Like a driver's license, a passport, or other commonly used personal IDs, a certificate provides generally recognized proof of a person's identity. Public-key cryptography uses certificates to address the problem of impersonation
+
+The certificate issued by the CA binds a particular public key to the name of the entity the certificate identifies (such as the name of an employee or a server). Certificates help prevent the use of fake public keys for impersonation. Only the public key certified by the certificate will work with the corresponding private key possessed by the entity identified by the certificate.\footnote{\url{https://developer.mozilla.org/en/docs/Introduction_to_Public-Key_Cryptography\#Certificates_and_Authentication}}
+
+\item[Token based] Token based authentication relies on using a unique string of characters as an identifier. This is mostly used for Web \ac{API} authentication and is referred to as an \ac{API} token. Most services that expose functionality via a JSON API or a RESTful API use tokens to authenticate the requests.   
+\end{description}
+ 
+
 
 \section{Transmitting Data through a RESTful API}
 There are several ways of packaging and transmitting data from any kind of \ac{API} to a client. Most of these formats have been standardized and are compatible with a lot of programming languages.
@@ -72,12 +93,13 @@ Since we are talking about web services here, you could use the WebServices Stan
 
 \ac{SOAP} consists of three parts: an envelope, which defines what is in the message and how to process it, a set of encoding rules for expressing instances of application-defined datatypes, and a convention for representing procedure calls and responses.\footnote{\url{http://en.wikipedia.org/wiki/SOAP}}
 
-The big disadvantage of using \ac{SOAP} is that it suffers from a big overhead, because of the extra information it encompasses. Compared to vanilla \ac{XML}, \ac{SOAP} takes more space and can also cause overhead on the processing application, because of the increased complexity.
+The big disadvantage of using \ac{SOAP} is that it suffers from a big overhead, because of the extra information it encompasses. Compared to plain \ac{XML}, \ac{SOAP} takes more space and can also cause overhead on the processing application, because of the increased complexity.
 
 For the purposes of our application, a protocol like \ac{SOAP} is actually overkill. We don't need extra information about how to process the data, when we know how the data is serialized and structured. Rails supports \ac{XML} and \ac{JSON} formats for serialization of objects, so we will take a further look into how they look and behave.
-
+\newpage
 \subsection{XML}
 The goal of \ac{XML} is to define a set of rules for encoding documents in a format that is both human-readable and machine-readable. Although the design of XML focuses on documents, it is widely used for the representation of arbitrary data structures, for example in web services.\footnote{\url{http://en.wikipedia.org/wiki/Xml}}
+%\newpage
 
 \lstset{language=XML}
 \begin{lstlisting}[frame=lt,caption=An XML example]

@@ -43,24 +43,21 @@ One of the easiest things to share between the platforms is the data handling co
 
 \texttt{Publications} represent each open vacancy that the application receives from the server and \texttt{Companies} represent each company offering those job applications and are there to help navigate the publications and filter them.
 
-These objects not only represent an instance of the corresponding object in-memory, but, thanks to a third-party library called \textit{SQLite.NET}, they also represent the foundation of an \ac{ORM} System, that makes the creation and management of a local database much easier.
+These objects not only represent an instance of the corresponding object in-memory, but, thanks to a third-party library called \textit{SQLite.NET}\footnote{\url{https://github.com/praeclarum/sqlite-net}}, they also represent the foundation of an \ac{ORM} System, that makes the creation and management of a local database much easier.
 
 Normally, when using the platform specific SQLite implementation, you need to define the database, insert each element in the table and manage queries and updates manually. 
 
 This can be really cumbersome if you have a lot of tables and elements in your database. By using \textit{SQLite.NET} there is no need for all these formalities, since the 'dirty' work is done by the library itself.
-\vfill
 
 \lstset{language=[Sharp]C}
 \begin{lstlisting}[frame=lt,caption=Company.cs, label={list:comp}]
 using SQLite;
-namespace MHMBase
-{
+namespace MHMBase {
 	[Table("companies")]
-	public class Company
-	{
+	public class Company 	{
 		[PrimaryKey, AutoIncrement]
 		public int Id { get; set; }
-		[MaxLength(20)]
+		[MaxLength(20), Unique]
 		public string Name { get; set; }
 		public string FullName { get; set; }
 		public string IconPath { get; set; }
@@ -71,16 +68,12 @@ namespace MHMBase
 
 \begin{lstlisting}[frame=lt,caption=Publication.cs, label={list:pub}]
 using SQLite;
-namespace MHMBase
-{
+namespace MHMBase {
 	[Table ("publications")]
-	public class Publication
-	{
+	public class Publication	{
 		[PrimaryKey, AutoIncrement]
 		public int Id { get; set; }
 		public string RemoteId { get; set; }
-		[Indexed]
-		public int CompanyId { get; set; }
 		public string Title { get; set; }
 		public string FullDescription { get; set; }
 		public string Company { get; set; }
@@ -102,10 +95,8 @@ But this is still just the starting point. We still ned to create an SQLite Conn
 
 \begin{lstlisting}[frame=lt,caption=DatabaseHelper.cs, label={list:db-save}]
 using SQLite;
-namespace MHMBase
-{
-	public class DatabaseHelper
-	{
+namespace MHMBase {
+	public class DatabaseHelper {
 		static DatabaseHelper currentInstance;
 		readonly SQLiteConnection db;
 		public static DatabaseHelper Instance {
@@ -125,6 +116,7 @@ namespace MHMBase
 	}
 }
 \end{lstlisting}
+\newpage
 
 \autoref{list:db-save} gives us a first hand look of how we handle the Database Integration. The \texttt{DatabaseHelper} Singleton \marginpar{Singleton: Special Class that only allows for a single instance of itself.} is in charge of creating a single instance of an \texttt{SQLiteConnection} that will be used throughout both Android and iOS applications.
 
@@ -206,6 +198,8 @@ Now that we have a list containing \texttt{Publication} objects we can add them 
 
 How the \texttt{callback} functions are used and what they do, will be discussed in \autoref{callback:and} and \autoref{callback:ios}.
 
+The process for retrieving the available companies is very similar, almost identical, so we will only take a look at the part that is different. Once everything has been downloaded, parsed and stored in a list, we iterate over this list and if the object doesn't exist in the database, we save it and then download an icon for the logo of this company to the internal storage, so that it can be retrieved by each publication belonging to this company. The code for this can be seen in \autoref{list:db-compparse}.
+
 \begin{lstlisting}[frame=lt,caption=CompaniesParser.cs,label={list:db-compparse}]
 foreach (var c in companies) {
 	try {
@@ -223,11 +217,10 @@ foreach (var c in companies) {
 }
 \end{lstlisting}
 
-This process for retrieving the available companies is very similar, almost identical, so we will only take a look at the part that is different. Once everything has been downloaded, parsed and stored in a list, we iterate over this list and if the object doesn't exist in the database, we save it and then download an icon for the logo of this company to the internal storage, so that it can be retrieved by each publication belonging to this company. The code for this can be seen in \autoref{list:db-compparse}.
 
 \section{Third-Party Libraries}
 
-As we mentioned before, third-party libraries are a great way of speeding up development, lowering complexity and improving maintainability. We already talked about one of this libraries, \textit{SQLite.NET}, and how we use it in our application. The following are all the libraries we use that are compatible with both platforms. 
+As we mentioned before, third-party libraries are a great way of speeding up development, lowering complexity and improving maintainability. We already talked about one of this libraries, \textit{SQLite.NET}, and how we use it in our application. The following are the libraries we use that are compatible with both platforms. 
 
 \subsection{Newtonsoft JSON}
 
@@ -238,36 +231,39 @@ Inside our application we use it to deserialize the returned result string, when
 Thanks to \ac{LINQ}, the code in charge of deserializing each element is very similar to the \ac{XML} deserialization code.
 
 \begin{lstlisting}[frame=lt,caption=Publication Search,label={list:search}]
-public void SendSearchParameters (Action<IList<Publication>> callback, string parameters) {
-	var http = (HttpWebRequest)WebRequest.Create(new Uri("_baseUrl"));
+public void SendSearchParameters (Action<IList<Publication>> callback, string parameters, Action<bool> error) {
+	var http = (HttpWebRequest)WebRequest.Create (new Uri (_baseUrl));
 	http.Accept = "application/json";
 	http.ContentType = "application/json";
 	http.Method = "POST";
-
 	var jObject = new JObject (new JProperty ("query", parameters));
-	var encoding = new UTF8Encoding();
-	Byte[] bytes = encoding.GetBytes(jObject.ToString());
+	var encoding = new UTF8Encoding ();
+	Byte[] bytes = encoding.GetBytes (jObject.ToString ());
+	IList<Publication> publications = new List<Publication> ();
+	Task.Factory.StartNew (() =>  {
+		var newStream = http.GetRequestStream ();
+		newStream.Write (bytes, 0, bytes.Length);
+		newStream.Close ();
+		var response = http.GetResponse ();
+		var stream = response.GetResponseStream ();
+		var sr = new StreamReader (stream);
+		var content = sr.ReadToEnd ();
+		var resultJSON = JObject.Parse (content);
+		publications = resultJSON ["publications"].Select (item => new Publication {
+			RemoteId = item ["id"].ToString (),
+			[...]
+		}).ToList ();
+	}).ContinueWith (state =>  {
+		if (state.Status == TaskStatus.Faulted) {
+			error (true);
+		}
+		else {
+			callback (publications);
+		}
+	});
+}\end{lstlisting}
 
-	var newStream = http.GetRequestStream();
-	newStream.Write(bytes, 0, bytes.Length);
-	newStream.Close();
-
-	var response = http.GetResponse();
-
-	var stream = response.GetResponseStream();
-	var sr = new StreamReader (stream);
-	var content = sr.ReadToEnd();
-	var resultJSON = JObject.Parse (content);
-	IList<Publication> publications = resultJSON["publications"].Select(item => new Publication	{
-		RemoteId = item["id"].ToString(),
-		Title = (string)item["title"],
-		[...]			
-	}).ToList();
-	callback(publications);
-}
-\end{lstlisting}
-
-As \autoref{list:search} shows, this time we need perform a \texttt{WebRequest} and upload the search parameters. This request isn't done asynchronously and the resulting string is saved for later processing.
+As \autoref{list:search} shows, this time we need perform a \texttt{WebRequest} and upload the search parameters. Since the request isn't done asynchronously by default, we need to create a background task, so that the \ac{UI} doesn't freeze, while the search is being done. Once the task is done, the resulting string is saved for later processing, or if there is an error, the error callback gets started.
 
 Once we have the result string, it gets parsed by the \texttt{JObject} class from \textit{Newtonsoft JSON}. This creates a \texttt{JObject} that is composed of a \texttt{Collection} of \texttt{JTokens}, each representing a serialized element of the result string. We can then access each item inside the "publications" token via \ac{LINQ} with the \texttt{Select} function and create a \texttt{Publication} object out of each item. All of these \texttt{Publication} objects get packed in a list and then passed to the \texttt{callback} function.
 

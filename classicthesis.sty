@@ -65,7 +65,10 @@
 % ******************************************************************** 
 \DeclareOption{tocaligned}{\setboolean{@tocaligned}{true}}
 \DeclareOption{eulerchapternumbers}{\setboolean{@eulerchapternumbers}{true}}
-\DeclareOption{drafting}{\setboolean{@drafting}{true}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%CAMBIAR AQUI PARA QUITAR FOOTER!!!%%%%%
+\DeclareOption{drafting}{\setboolean{@drafting}{false}}
 \DeclareOption{linedheaders}{\setboolean{@linedheaders}{true}}
 \DeclareOption{listsseparated}{\setboolean{@listsseparated}{true}}
 \DeclareOption{subfigure}{%
@@ -686,7 +689,7 @@
 		\RequirePackage{prelim2e}
         \renewcommand{\PrelimWords}{\relax}
         \renewcommand{\PrelimText}{\footnotesize[\,\today\ at \thistime\ -- \texttt{classicthesis}~\myVersion\,]}
-}{\renewcommand{\finalVersionString}{\emph{Final Version} as of \today\ (\texttt{classicthesis}~\myVersion).}}    
+}{\renewcommand{\finalVersionString}{\emph{Final Version} as of \today\ .}} %(\texttt{classicthesis}~\myVersion)   
 
 % ********************************************************************
 % Caption numbering now w/o chapter number

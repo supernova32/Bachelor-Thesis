@@ -4,35 +4,33 @@
 % If problems with the headers: get headings in appendix etc. right
 %\markboth{\spacedlowsmallcaps{Appendix}}{\spacedlowsmallcaps{Appendix}}
 \chapter{Appendix}
-Lorem ipsum at nusquam appellantur his, ut eos erant homero
-concludaturque. Albucius appellantur deterruisset id eam, vivendum
-partiendo dissentiet ei ius. Vis melius facilisis ea, sea id convenire
-referrentur, takimata adolescens ex duo. Ei harum argumentum per. Eam
-vidit exerci appetere ad, ut vel zzril intellegam interpretaris.
-
-Errem omnium ea per, pro congue populo ornatus cu, ex qui dicant
-nemore melius. No pri diam iriure euismod. Graecis eleifend
-appellantur quo id. Id corpora inimicus nam, facer nonummy ne pro,
-kasd repudiandae ei mei. Mea menandri mediocrem dissentiet cu, ex
-nominati imperdiet nec, sea odio duis vocent ei. Tempor everti
-appareat cu ius, ridens audiam an qui, aliquid admodum conceptam ne
-qui. Vis ea melius nostrum, mel alienum euripidis eu.
 
 \section{Glossary}\label{glos}
-AOT
-JIT
-Intermediate Language
-MVC
-MVVM
-Closure
-Lambda
+Take a look in here for a better description of concepts used throughout this work. If you require a more detailed definition, please consult the corresponding literature.
 
+The following definitions are all taken from \textit{Wikipedia}.
 
+\begin{description}
 
-  
-\begin{lstlisting}[float,caption=A floating example]
-for i:=maxint to 0 do
-begin
-{ do nothing }
-end;
-\end{lstlisting}
+\item[AOT] Ahead Of Time refers to the compilation of an intermediate language, like Java or C\#, to a system-dependent binary. Using AOT compilation usually results in performance increases, because the code doesn't need to be compiled at runtime.  
+
+\item[JIT] Just In Time refers to the compilation of an intermediate language to machine code just before the code's execution. This task can slow down performance or pose security risks, but has added benefits like dynamic code generation and improved reflections.
+
+\item[MVC] Model–view–controller is a software pattern for implementing user interfaces. It divides a given software application into three interconnected parts, so as to separate internal representations of information from the ways that information is presented to or accepted from the user. The central component, the model, consists of application data, business rules, logic, and functions. Multiple views of the same information are possible. The third part, the controller, accepts input and converts it to commands for the model or view.
+
+\item[MVVM] The Model View ViewModel is an architectural pattern used in software engineering that originated from Microsoft as a specialization of the Presentation Model design pattern introduced by Martin Fowler. Largely based on the \ac{MVC} pattern, MVVM is a specific implementation targeted at UI development platforms which support the event-driven programming in Windows Presentation Foundation (WPF) and Silverlight on the .NET platforms using XAML and .NET languages.
+
+\item[Closure] In programming languages, a closure (also lexical closure or function closure) is a function or reference to a function together with a referencing environment—a table storing a reference to each of the non-local variables (also called free variables or upvalues) of that function. A closure—unlike a plain function pointer—allows a function to access those non-local variables even when invoked outside its immediate lexical scope.
+
+\item[Lambda Functions] In computer programming, an anonymous function (also function constant, function literal, or lambda function) is a function defined, and possibly called, without being bound to an identifier. Anonymous functions are convenient to pass as an argument to a higher-order function and are ubiquitous in languages with first-class functions such as Haskell. Anonymous functions are a form of nested function, in that they allow access to variables in the scope of the containing function (non-local variables). Unlike named nested functions, they cannot be recursive without the assistance of a fixpoint operator (also known as an anonymous fixpoint or anonymous recursion).
+\end{description}
+
+\section{CD Folder Structure}
+As per the requirements of the University, the following is a description of the file structure of the CD that is part of this work. The CD includes all the code for the Job Portal Aggregator, plus a copy of all the online references made here and a digital version of the thesis.
+
+The root folder of the CD contains the following elements:
+\begin{description}
+\item[PDF File] A PDF File named\\ Patricio\_Cano\_373704\_BachelorArbeit\_2014.pdf that contains this document in digital format.
+\item[Website Copies] A folder named Website Copies, that contains a saved copy of all the websites used as reference for this thesis.
+\item[Text File] A text file named folderStructure.txt containing the output of the \texttt{tree} Unix command. This program outputs the entire folder structure of a given path, including subfolders. In this case it contains the folder structure of this CD.
+\end{description}
