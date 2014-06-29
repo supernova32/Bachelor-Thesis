@@ -2,7 +2,7 @@
 
 ##What is it about?
 
-Well, this repository contains the tex files for my Bachelor's Theses from the University of
+Well, this repository contains the tex files for my Bachelor's Thesis from the University of
 Applied Sciences in Stuttgart, Germany.
 
 It focuses on the challenges of developing a multi-platform mobile applications and the
